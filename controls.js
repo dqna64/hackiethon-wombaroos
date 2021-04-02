@@ -13,3 +13,17 @@ function checkOut() {
     // send the days object to local storage
     setItem("days", days);
 }
+
+function submitPreferredSleepTime() {
+    // get the raw text of the input given
+    console.log("submit preferred sleep time")
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    $("#checkoutButton").click(function(){
+        checkOut()
+    })
+    $("#submitPreferredSleepTimeButton").click(function(){
+        console.log("submitPreferredSleepTime")
+    })
+})
