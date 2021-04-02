@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(194, 205, 214);
+}
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    background: rgb(29, 29, 29);
+}
+
+.graphics-container {
+    background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));
+    width: 50%;
+    height: 580px;
+}
