@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+}
+
+.rocket {
+    background-color: burlywood;
+    max-width: 50%;
+}
+.mainDiv{
+    height: 90%;
+}
+
+.rowElement{
+    height: 33%;
+}
+
+.streak{
+    background-color: aquamarine;
+}
+.date{
+    background-color: darkslategray;
+}
