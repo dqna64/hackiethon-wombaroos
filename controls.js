@@ -16,7 +16,15 @@ function checkOut() {
 
 function submitPreferredSleepTime() {
     // get the raw text of the input given
-    console.log("submit preferred sleep time")
+    let user_preferences = getItem("user", {})
+    // add the preferred time property
+    let input = document.getElementById("submitPreferredSleepTimeInput").value
+    let hours = parseInt(input.split(":")[0])
+    let minutes = parseInt(input.split(":")[1])
+    // set preferred hours and preferred minutes
+    user_preferences["preferred-sleep-hour"] = hours
+    user_preferences["preferred-sleep-minute"] = minutes;
+    setItem("user", user_preferences);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,6 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         checkOut()
     })
     $("#submitPreferredSleepTimeButton").click(function(){
-        console.log("submitPreferredSleepTime")
+        submitPreferredSleepTime()
     })
 })
