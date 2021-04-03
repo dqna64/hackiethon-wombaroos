@@ -59,6 +59,7 @@ textarea:focus, input:focus {
     border-radius: 0.25rem;
     outline:none;
     border: 0px solid red;
+    color: #000000;
 }
 
 .setTime {
