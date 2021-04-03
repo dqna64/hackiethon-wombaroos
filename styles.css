@@ -49,6 +49,18 @@ html, body {
 
 }
 
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.time {
+    -moz-border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    border-radius: 0.25rem;
+    outline:none;
+    border: 0px solid red;
+}
+
 .setTime {
     height: 5%;
 }
