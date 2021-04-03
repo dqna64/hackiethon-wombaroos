@@ -150,21 +150,22 @@ function submitPreferredSleepTime() {
     }
     user_preferences["preferred-sleep-hour"] = hours
     user_preferences["preferred-sleep-minute"] = minutes;
-    console.log(user_preferences)
     setItem("user", user_preferences);
     let user = getItem("user", {})
     let preferredHour = user["preferred-sleep-hour"]
     let preferredMin = user["preferred-sleep-minute"]
-    if (preferredHour >= 0 && preferredHour <= 2){
+    if (preferredHour >= 0 && preferredHour <= 2) {
         preferredHour += 24
     }
     let date = new Date
-    let dateString = String(date.getHours()) + ":"
     let hourGap = preferredHour - date.getHours()
     minGap = preferredMin - date.getMinutes()
+    
     let totalGap = hourGap*60 + minGap
-    if (totalGap > 0){
-        $(".timeUntil").text(totalGap + " minutes until timeout")
+    if (totalGap < 0) {
+        $(".timeUntil").text(-totalGap + " minutes until checkout")
+    } else {
+        $(".timeUntil").text(totalGap + " minutes have past, you've already lost " + totalGap + " bars of fuel so go to sleep soon if you can!")
     }
     $(".alert").css("display", "flex")
     $(".alert").text("Your preferred time has been set!")
@@ -186,14 +187,18 @@ function updateClock() {
     let user = getItem("user", {})
     let preferredHour = user["preferred-sleep-hour"]
     let preferredMin = user["preferred-sleep-minute"]
-    if (preferredHour >= 0 && preferredHour <= 2){
+    if (preferredHour >= 0 && preferredHour <= 2) {
         preferredHour += 24
     }
+
     let hourGap = preferredHour - date.getHours()
     minGap = preferredMin - date.getMinutes()
+    
     let totalGap = hourGap*60 + minGap
-    if (totalGap > 0){
-        $(".timeUntil").text(totalGap + " minutes until timeout")
+    if (totalGap < 0) {
+        $(".timeUntil").text(-totalGap + " minutes until checkout")
+    } else {
+        $(".timeUntil").text(totalGap + " minutes have past, you've already lost " + totalGap + " bars of fuel so go to sleep soon if you can!")
     }
     return date
 }
