@@ -35,3 +35,7 @@ html, body {
 .setTime{
     height: 10%;
 }
+
+#submitPreferredSleepTimeInput{
+    width: 100%;
+}

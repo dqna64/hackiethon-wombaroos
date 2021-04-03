@@ -81,6 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
         submitPreferredSleepTime()
     })
     let date = new Date
-    let dateString = String(date.getHours()) + ": " + String(date.getMinutes())
+    let dateString = String(date.getHours()) + " : " 
+    if (date.getMinutes() < 10){
+        dateString = dateString + "0"
+    }
+    dateString = dateString + String(date.getMinutes())
     $(".dateTime").text(dateString)
 })
