@@ -25,7 +25,14 @@ function getTimeDifference(user, current_time) {
         checkout_total_minutes = (diffDays - 1) * 24 * 60 + checkout_hours * 60 + checkout_minutes;
       } else {
           if (days.length - 2 < 0) {
-            checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+            if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
+                checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+            }
+            else {
+                // user attemped 2 checkouts in less than 12 hours
+                $("#checkoutText").attr('title', "Sorry you can't checkout 2 times in less than 12 hours")
+                $("#checkoutText").popover('show')
+            }
           }
           else {
             let second_last_checkout_day = new Date(days[days.length - 2].time_of_sign_out);
@@ -34,10 +41,14 @@ function getTimeDifference(user, current_time) {
                 checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
               }
               else {
-                alert("STOP CHEATING!!!");
+                // user attemped 2 checkouts in less than 12 hours
+                $("#checkoutText").attr('title', "Sorry you can't checkout 2 times in less than 12 hours")
+                $("#checkoutText").popover('show')
               }
             } else {
-              alert("STOP CHEATING!!!");
+              // user attemped 3 checkouts in a day
+              $("#checkoutText").attr('title', "Sorry you can't checkout 3 times in a day")
+              $("#checkoutText").popover('show')
             }
           }      
       }
