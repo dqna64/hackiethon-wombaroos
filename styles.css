@@ -62,6 +62,8 @@ textarea:focus, input:focus {
 }
 
 .setTime {
+    border-size: 10px;
+    border-color: #dc7aff;
     height: 5%;
 }
 
