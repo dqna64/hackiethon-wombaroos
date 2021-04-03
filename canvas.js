@@ -4,10 +4,6 @@ let ctx = canvas.getContext("2d")
 drawPlanet('A')
 drawPlanet('B')
 
-
-updateCanvas(user_preferences);
-
-
 function updateCanvas(user_preferences) {
     let updatedY = (canvas.height - 192) - user_preferences["position"] * (canvas.height - 2 * 192) / 7;
     drawRocket(updatedY);

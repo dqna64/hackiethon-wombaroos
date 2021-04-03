@@ -136,12 +136,17 @@ function checkOut() {
         updateFuel(user_preferences, time_difference);
     }
 
-    updatePosition(user_preferences, late, time_difference);
+    // TODO: change later
+    updatePosition(user_preferences, true, time_difference);
 
     // update html to show the new streak
     $(".currentStreak").text(user_preferences["streak"])
     $(".currentFuel").text("Current Fuel: " + user_preferences["fuel"])
     $(".currentPosition").text("Current Position: " + user_preferences["position"])
+
+    // updateCanvas
+    updateCanvas(user_preferences)
+
     // upload preferences to local storage
     setItem("user", user_preferences)
 
@@ -285,4 +290,6 @@ function restoreData(){
     // display fuel and position
     $(".currentFuel").text("Current Fuel: " + user["fuel"])
     $(".currentPosition").text("Current Position: " + user["position"])
+
+    updateCanvas(user)
 }
