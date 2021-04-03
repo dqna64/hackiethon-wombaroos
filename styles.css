@@ -78,3 +78,7 @@ html, body {
     text-align: center;
     color: white;
 }
+
+.fireNumber {
+    padding-left: 0;
+}
