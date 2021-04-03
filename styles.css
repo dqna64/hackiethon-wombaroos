@@ -123,15 +123,14 @@ textarea:focus, input:focus {
 }
 
 canvas {
-    position: relative; 
+    border: 2px #a9ebe0 solid;
+
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    border: 2px #a9ebe0 solid;
-    width: 800px; 
-    height: 800px;
+    width: 820px;
 }
 
 .currentFuel, .currentPosition {
