@@ -46,6 +46,7 @@ function submitPreferredSleepTime() {
     // set preferred hours and preferred minutes
     user_preferences["preferred-sleep-hour"] = hours
     user_preferences["preferred-sleep-minute"] = minutes;
+    console.log(user_preferences)
     setItem("user", user_preferences);
 }
 
@@ -56,4 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#submitPreferredSleepTimeButton").click(function(){
         submitPreferredSleepTime()
     })
+    let date = new Date
+    let dateString = String(date.getHours()) + ": " + String(date.getMinutes())
+    $(".dateTime").text(dateString)
 })
