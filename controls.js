@@ -269,6 +269,8 @@ window.addEventListener('resize', resizeCanvas, false);
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    let user_preferences = getItem("user", {})
+    console.log(user_preferences)
     updateCanvas(user_preferences)
 }
 
@@ -325,6 +327,6 @@ function restoreData() {
     $(".currentPosition").text("Current Position: " + user["position"])
     $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
     $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
-
+    console.log(user["position"])
     updateCanvas(user)
 }
