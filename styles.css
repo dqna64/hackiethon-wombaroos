@@ -14,8 +14,20 @@ html, body {
     height: 33%;
 }
 
+#currentStreak{
+    text-align: center;
+    margin: auto;
+    font-size: xx-large;
+}
+
 .streak{
+    justify-content: center;
+    align-items: center;
+    display: flex;
     background-color: aquamarine;
+    border-radius: 0.25rem;
+    
+    
 }
 .date{
     height: 28%;
@@ -23,6 +35,7 @@ html, body {
     justify-content: center;
     align-items: center;
     display: flex;
+    border-radius: 0.25rem;
 }
 
 .dateTime {
@@ -42,7 +55,7 @@ html, body {
 }
 
 #checkoutButton {
-    height: 20%;
+    height: 23%;
     margin-top: 8px;
     margin-bottom: 8px;
     justify-content: center;
