@@ -14,9 +14,56 @@ html, body {
     height: 33%;
 }
 
+#currentStreak{
+    text-align: center;
+    margin: auto;
+    font-size: xx-large;
+}
+
 .streak{
+    justify-content: center;
+    align-items: center;
+    display: flex;
     background-color: aquamarine;
+    border-radius: 0.25rem;
+    
+    
 }
 .date{
+    height: 28%;
     background-color: darkslategray;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 0.25rem;
+}
+
+.dateTime {
+    text-align: center;
+    margin: auto;
+    font-size: xx-large;
+    color: white;
+
+}
+
+.setTime{
+    height: 5%;
+}
+
+#submitPreferredSleepTimeInput{
+    width: 100%;
+}
+
+#checkoutButton {
+    height: 23%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#checkoutText {
+    text-align: center;
+    margin: auto
 }
