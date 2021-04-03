@@ -114,13 +114,9 @@ textarea:focus, input:focus {
     padding-left: 0;
 }
 
-.p5Canvas {
-    
-}
-
 #canvas-container {
     /*background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));*/
-    background:transparent;
+    background: transparent;
 }
 
 canvas {
@@ -135,6 +131,6 @@ canvas {
     width: 820px;
 }
 
-.currentFuel, .currentPosition {
+.currentFuel, .currentPosition, .currentPlanetA, .currentPlanetB {
     color: white;
 }

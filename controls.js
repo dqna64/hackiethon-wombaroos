@@ -1,3 +1,4 @@
+
 // getTimeDifference will return the difference in time between 2 times
 function getTimeDifference(user, current_time) {
     let days = getItem("days", []);
@@ -268,16 +269,31 @@ function restoreData() {
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
     }
-    if (!("streak" in user)) {
+    if (!(user.hasOwnProperty("streak"))) {
         // set streak to 0
         user["streak"] = 0
     }
-    if (!("position" in user)) {
+    if (!(user.hasOwnProperty("position"))) {
         user["position"] = 0;
     }
-    if (!("fuel" in user)) {
+    if (!(user.hasOwnProperty("fuel"))) {
         user["fuel"] = 100
     }
+    // if (!(user.hasOwnProperty("currentPlanetA"))) {
+    //     // Get a random integer in range 0 - 7 inclusive,
+    //     // because if you look in canvas.js, there are 8
+    //     // availble planets to choose from.
+    //     // user["currentPlanetA"] = Math.floor(Math.random() * 8)
+    //     user["currentPlanetA"] = 4
+    // }
+    // if (!(user.hasOwnProperty("currentPlanetB"))) {
+    //     // Get a random integer in range 0 - 7 inclusive,
+    //     // because if you look in canvas.js, there are 8
+    //     // availble planets to choose from.
+    //     // user["currentPlanetB"] = Math.floor(Math.random() * 8)
+    //     user["currentPlanetB"] = 6
+    // }
+
     setItem("user", user)
     let inputString = ""
     if (user["preferred-sleep-hour"] < 10) {
@@ -293,9 +309,11 @@ function restoreData() {
     // display the streak
     $(".currentStreak").text(user["streak"])
 
-    // display fuel and position
+    // display fuel and position and current planets A and B
     $(".currentFuel").text("Current Fuel: " + user["fuel"])
     $(".currentPosition").text("Current Position: " + user["position"])
+    $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
+    $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
 
     updateCanvas(user)
 }

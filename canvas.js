@@ -12,6 +12,19 @@ let rocket_size = 50;
 // Asteroid square size
 let asteroid_size = 32;
 
+// An array with the file names of all 8 available planets
+let allPlanets = [
+    'cheese',
+    'jupiter',
+    'jupiter2',
+    'jupiter3',
+    'neptune',
+    'saturn',
+    'titan',
+    'uranas'
+]
+
+// Test user_preferences object
 let user_preferences = {
     'position': 4,
 }
@@ -22,8 +35,8 @@ function updateCanvas(user_preferences) {
     for (let i = 1; i < 7; i++) {
         drawAsteroid(i)
     }
-    drawPlanet('A')
-    drawPlanet('B')
+    drawPlanet('A', user_preferences['currentPlanetA'])
+    drawPlanet('B', user_preferences['currentPlanetB'])
     // (planet A) + (planet B - planet A) * position / 7
     let updatedY = (canvas.height - planet_size - edge_offset - rocket_size) + ((edge_offset) - (canvas.height - planet_size - edge_offset - rocket_size)) * user_preferences["position"] / 7;
     drawRocket(updatedY);
@@ -40,7 +53,7 @@ function drawRocket(y) {
     image.src = "graphics/assets/rocket.png";
 }
 
-function drawPlanet(planetType) {
+function drawPlanet(planetType, planetsIndex) {
     let x = (canvas.width - planet_size) / 2
     let y;
     if (planetType == 'A') {
@@ -58,7 +71,9 @@ function drawPlanet(planetType) {
         // Draw planets at 256x256 pixels 
         ctx.drawImage(image, x, y, planet_size, planet_size);
     };
-    image.src = "graphics/assets/jupiter.png";
+    // image.src = `graphics/assets/${allPlanets[planetsIndex]}.png`;
+    image.src = `graphics/assets/${allPlanets[1]}.png`;
+
 }
 
 function drawAsteroid(num) {
