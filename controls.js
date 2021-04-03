@@ -137,7 +137,7 @@ function checkOut() {
     }
 
     // TODO: change later
-    updatePosition(user_preferences, true, time_difference);
+    updatePosition(user_preferences, late, time_difference);
 
     // update html to show the new streak
     $(".currentStreak").text(user_preferences["streak"])
