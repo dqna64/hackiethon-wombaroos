@@ -25,14 +25,30 @@ function getTimeDifference(user, current_time) {
         checkout_total_minutes = (diffDays - 1) * 24 * 60 + checkout_hours * 60 + checkout_minutes;
       } else {
           if (days.length - 2 < 0) {
-            checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+            if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
+                checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+            }
+            else {
+                // user attemped 2 checkouts in less than 12 hours
+                $("#checkoutText").attr('title', "Sorry you can't checkout 2 times in less than 12 hours")
+                $("#checkoutText").popover('show')
+            }
           }
           else {
             let second_last_checkout_day = new Date(days[days.length - 2].time_of_sign_out);
             if (second_last_checkout_day.getDate() != current_time.getDate()) {
+              if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
                 checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+              }
+              else {
+                // user attemped 2 checkouts in less than 12 hours
+                $("#checkoutText").attr('title', "Sorry you can't checkout 2 times in less than 12 hours")
+                $("#checkoutText").popover('show')
+              }
             } else {
-                alert("STOP CHEATING!!!");
+              // user attemped 3 checkouts in a day
+              $("#checkoutText").attr('title', "Sorry you can't checkout 3 times in a day")
+              $("#checkoutText").popover('show')
             }
           }      
       }
@@ -48,8 +64,14 @@ function getTimeDifference(user, current_time) {
     return (checkout_total_minutes - preferred_total_minutes);
 }
 
-function updateFuel() {
-    let user_preferences = getItem("user", {})
+function updateFuel(user_preferences) {
+    // check if the fuel key exists
+    if (!("fuel" in user_preferences)) {
+        user_preferences["fuel"] = 5
+    } else if (user_preferences["fuel"] > 0) {
+        // fuel is defined and non empty so just reduce fuel by 1
+        user_preferences["fuel"] = user_preferences["fuel"] - 1
+    }
 }
 
 function checkOut() {
@@ -70,13 +92,23 @@ function checkOut() {
         user_preferences["total_points"] = user_preferences["total_points"] + 1
         // add 1 to the streak
         user_preferences["streak"] = user_preferences["streak"] + 1
+    } else if (isNaN(time_difference)) {
+        // this indicates the checkout wasn't done and an alert happened
+        // so just do nothing lmao
     } else {
         // check how many increments of 10 minutes after they have gone past
         let light_years_decrement = Math.floor(time_difference % 10)
+        console.log(light_years_decrement)
+        console.log(time_difference)
 
         // reset the streak
         user_preferences["streak"] = 0
+
+        // remove the fuel key so updateFuel puts it back to 5
+        delete user_preferences["fuel"]
     }
+
+    updateFuel(user_preferences)
 
     // update html to show the new streak
     $(".currentStreak").text(user_preferences["streak"])
@@ -109,32 +141,18 @@ function submitPreferredSleepTime() {
     }
     user_preferences["preferred-sleep-hour"] = hours
     user_preferences["preferred-sleep-minute"] = minutes;
+    console.log(user_preferences)
     setItem("user", user_preferences);
 }
 
 function updateClock() {
     let date = new Date
-    let dateString = ""
-    let isNight = false
-    if (date.getHours() > 12){
-        isNight = true
-        dateString += String(date.getHours() % 12)
-    }
-    else{
-        dateString += String(date.getHours())
-    }
-    dateString += ":"
+    let dateString = String(date.getHours()) + ":"
     // add the minutes now
     if (date.getMinutes() < 10){
         dateString += "0"
     }
     dateString += String(date.getMinutes())
-    if (isNight){
-        dateString += "pm"
-    }
-    else{
-        dateString  += "am"
-    }
     $(".dateTime").text(dateString)
 
     let user = getItem("user", {})
@@ -173,15 +191,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     $("#submitPreferredSleepTimeButton").popover()
-    $('.popover-dismiss').popover({
-        trigger: "focus"
-    })
     restoreData()
 })
 
 function restoreData(){
     let user = getItem("user", {})
-    console.log(user)
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
     if (isNaN(hours) && isNaN(mins)){
