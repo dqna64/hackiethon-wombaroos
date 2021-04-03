@@ -62,18 +62,15 @@ function submitPreferredSleepTime() {
     let hours = parseInt(input.split(":")[0])
     let minutes = parseInt(input.split(":")[1])
     // set preferred hours and preferred minutes
-<<<<<<< HEAD
     if (!isNaN(hours) && !isNaN(minutes)) {
         user_preferences["preferred-sleep-hour"] = hours
         user_preferences["preferred-sleep-minute"] = minutes;
         setItem("user", user_preferences);
     }
-=======
     user_preferences["preferred-sleep-hour"] = hours
     user_preferences["preferred-sleep-minute"] = minutes;
     console.log(user_preferences)
     setItem("user", user_preferences);
->>>>>>> a835e897ed6c63049c98d1f7747191dad23fc3b7
 }
 
 document.addEventListener("DOMContentLoaded", function () {
