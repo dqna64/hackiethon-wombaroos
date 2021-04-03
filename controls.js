@@ -115,13 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
         submitPreferredSleepTime()
     })
     let date = new Date
-    let dateString = String(date.getHours()) + ":" + String(date.getMinutes())
+    let dateString = String(date.getHours()) + ": " + String(date.getMinutes())
     $(".dateTime").text(dateString)
-    setInterval(function() {
-        let date = new Date
-        let dateString = String(date.getHours()) + ":" + String(date.getMinutes())
-        $(".dateTime").text(dateString)
-    }, 1000 * 60)
+    let seconds_until_next_minute = 60 - date.GetSeconds()
+    // set a timeout until the next minute and then start the interval
+    setTimeout(function() {
+        setInterval(function() {
+            let date = new Date
+            let dateString = String(date.getHours()) + ": " + String    (date.getMinutes())
+            $(".dateTime").text(dateString)
+        }, 60 * 1000)
+    }, seconds_until_next_minute)
+    
     
     $("#submitPreferredSleepTimeButton").popover()
     restoreData()
