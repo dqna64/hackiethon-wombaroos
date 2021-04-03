@@ -4,9 +4,12 @@ let ctx = canvas.getContext("2d")
 drawPlanet('A')
 drawPlanet('B')
 
-
+// let user_preferences = getItem("user", {})
+// console.log(user_preferences)
+let user_preferences = {
+    'position': 7,
+}
 updateCanvas(user_preferences);
-
 
 function updateCanvas(user_preferences) {
     let updatedY = (canvas.height - 192) - user_preferences["position"] * (canvas.height - 2 * 192) / 7;
