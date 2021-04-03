@@ -151,11 +151,15 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     $("#submitPreferredSleepTimeButton").popover()
+    $('.popover-dismiss').popover({
+        trigger: "focus"
+    })
     restoreData()
 })
 
 function restoreData(){
     let user = getItem("user", {})
+    console.log(user)
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
     if (isNaN(hours) && isNaN(mins)){
@@ -163,7 +167,11 @@ function restoreData(){
         user["preferred-sleep-minute"] = 0
     }
     setItem("user", user)
-    let inputString = String(user["preferred-sleep-hour"]) + ":"
+    let inputString = ""
+    if (user["preferred-sleep-hour"] < 10){
+        inputString += "0"
+    }
+    inputString += String(user["preferred-sleep-hour"]) + ":"
     if (user["preferred-sleep-minute"] < 10){
         inputString += "0"
     }

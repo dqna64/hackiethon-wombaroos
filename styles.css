@@ -18,6 +18,7 @@ html, body {
     background-color: aquamarine;
 }
 .date{
+    height: 28%;
     background-color: darkslategray;
     justify-content: center;
     align-items: center;
@@ -38,4 +39,18 @@ html, body {
 
 #submitPreferredSleepTimeInput{
     width: 100%;
+}
+
+#checkoutButton {
+    height: 20%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#checkoutText {
+    text-align: center;
+    margin: auto
 }
