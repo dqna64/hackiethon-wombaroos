@@ -123,6 +123,10 @@ textarea:focus, input:focus {
 }
 
 canvas {
+    
+}
+
+#myCanvas {
     position: relative; 
     padding-left: 0;
     padding-right: 0;
