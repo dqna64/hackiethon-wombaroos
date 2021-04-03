@@ -154,6 +154,19 @@ function updateClock() {
     }
     dateString += String(date.getMinutes())
     $(".dateTime").text(dateString)
+
+    let user = getItem("user", {})
+    let preferredHour = user["preferred-sleep-hour"]
+    let preferredMin = user["preferred-sleep-minute"]
+    if (preferredHour >= 0 && preferredHour <= 2){
+        preferredHour += 24
+    }
+    let hourGap = preferredHour - date.getHours()
+    minGap = preferredMin - date.getMinutes()
+    let totalGap = hourGap*60 + minGap
+    if (totalGap > 0){
+        $(".timeUntil").text(totalGap + " minutes until timeout")
+    }
     return date
 }
 
@@ -178,6 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     $("#submitPreferredSleepTimeButton").popover()
+    $('.popover-dismiss').popover({
+        trigger: 'focus'
+      })
     restoreData()
 })
 
