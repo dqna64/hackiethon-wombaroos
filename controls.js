@@ -19,10 +19,17 @@ function getTimeDifference(user, current_time) {
       let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
 
       // check if person checked out on the next day or skipped a day
-      if (diffDays <= 1) {
+      if (diffDays == 1) {
         checkout_total_minutes =  checkout_hours * 60 + checkout_minutes;
       } else if (diffDays > 1) {
         checkout_total_minutes = (diffDays - 1) * 24 * 60 + checkout_hours * 60 + checkout_minutes;
+      } else {
+            let second_last_checkout_day = new Date(days[days.length - 2].time_of_sign_out);
+            if (second_last_checkout_day.getDate() != current_time.getDate()) {
+                checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+            } else {
+                alert("STOP CHEATING!!!");
+            }
       }
     }
     else {
@@ -66,7 +73,7 @@ function checkOut() {
 
     console.log(user_preferences["streak"])
     // update html to show the new streak
-    $("#currentStreak").text(user_preferences["streak"])
+    $(".currentStreak").text(user_preferences["streak"])
     // upload preferences to local storage
     setItem("user", user_preferences)
 
@@ -108,8 +115,14 @@ document.addEventListener("DOMContentLoaded", function () {
         submitPreferredSleepTime()
     })
     let date = new Date
-    let dateString = String(date.getHours()) + ": " + String(date.getMinutes())
+    let dateString = String(date.getHours()) + ":" + String(date.getMinutes())
     $(".dateTime").text(dateString)
+    setInterval(function() {
+        let date = new Date
+        let dateString = String(date.getHours()) + ":" + String(date.getMinutes())
+        $(".dateTime").text(dateString)
+    }, 1000 * 60)
+    
     $("#submitPreferredSleepTimeButton").popover()
     restoreData()
 })
