@@ -15,9 +15,9 @@ let rocket_img;
 let rocket;
 
 function preload() {
-    planet1_img = loadImage('../graphics/assets/jupiter.png');
-    planet2_img = loadImage('../graphics/assets/neptune.png');
-    rocket_img = loadImage('../graphics/assets/rocket.png');
+    planet1_img = loadImage('graphics/assets/jupiter.png');
+    planet2_img = loadImage('graphics/assets/neptune.png');
+    rocket_img = loadImage('graphics/assets/rocket.png');
 
 }
 
