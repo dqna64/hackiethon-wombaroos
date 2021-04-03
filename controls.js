@@ -120,12 +120,27 @@ function submitPreferredSleepTime() {
 
 function updateClock() {
     let date = new Date
-    let dateString = String(date.getHours()) + ":"
+    let dateString = ""
+    let isNight = false
+    if (date.getHours() > 12){
+        isNight = true
+        dateString += String(date.getHours() % 12)
+    }
+    else{
+        dateString += String(date.getHours())
+    }
+    dateString += ":"
     // add the minutes now
     if (date.getMinutes() < 10){
         dateString += "0"
     }
     dateString += String(date.getMinutes())
+    if (isNight){
+        dateString += "pm"
+    }
+    else{
+        dateString  += "am"
+    }
     $(".dateTime").text(dateString)
     return date
 }
