@@ -10,71 +10,71 @@ function getTimeDifference(user, current_time) {
     let preferred_minutes = user["preferred-sleep-minute"];
 
     let preferred_total_minutes = preferred_hours * 60 + preferred_minutes;
-    let checkout_total_minutes; 
+    let checkout_total_minutes;
 
     if (days.length != 0) {
-      let last_checkout_day = new Date(days[days.length - 1].time_of_sign_out);
+        let last_checkout_day = new Date(days[days.length - 1].time_of_sign_out);
 
-      let diffTime = Math.abs(last_checkout_day - current_time);
-      let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+        let diffTime = Math.abs(last_checkout_day - current_time);
+        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-      // check if person checked out on the next day or skipped a day
-      if (diffDays == 1) {
-        checkout_total_minutes =  checkout_hours * 60 + checkout_minutes;
-      } else if (diffDays > 1) {
-        checkout_total_minutes = (diffDays - 1) * 24 * 60 + checkout_hours * 60 + checkout_minutes;
-      } else {
-          if (days.length - 2 < 0) {
-            if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
-                checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+        // check if person checked out on the next day or skipped a day
+        if (diffDays == 1) {
+            checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+        } else if (diffDays > 1) {
+            checkout_total_minutes = (diffDays - 1) * 24 * 60 + checkout_hours * 60 + checkout_minutes;
+        } else {
+            if (days.length - 2 < 0) {
+                if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
+                    checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+                }
+                else {
+                    // user attemped 2 checkouts in less than 12 hours
+                    $(".alert").css("display", "block")
+                    $(".alert").text("Sorry you can't checkout 2 times in less than 12 hours")
+                    window.setTimeout(function () {
+                        $(".alert").css("display", "none")
+                    }, 2000)
+                    if (user["position"] > 0) {
+                        user["position"] = user["position"] - 1;
+                    }
+                }
             }
             else {
-                // user attemped 2 checkouts in less than 12 hours
-                $(".alert").css("display", "block")
-                $(".alert").text("Sorry you can't checkout 2 times in less than 12 hours")
-                window.setTimeout(function(){
-                    $(".alert").css("display", "none")
-                },2000)
-                if (user["position"] > 0) {
-                    user["position"] = user["position"] - 1;
+                let second_last_checkout_day = new Date(days[days.length - 2].time_of_sign_out);
+                if (second_last_checkout_day.getDate() != current_time.getDate()) {
+                    if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
+                        checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+                    }
+                    else {
+                        // user attemped 2 checkouts in less than 12 hours
+                        $(".alert").css("display", "block")
+                        $(".alert").text("Sorry you can't checkout 2 times in less than 12 hours")
+                        window.setTimeout(function () {
+                            $(".alert").css("display", "none")
+                        }, 2000)
+                        if (user["position"] > 0) {
+                            user["position"] = user["position"] - 1;
+                        }
+                    }
+                } else {
+                    // user attemped 3 checkouts in a day
+                    $(".alert").css("display", "block")
+                    $(".alert").text("Sorry you can't checkout 3 times in a day")
+                    window.setTimeout(function () {
+                        $(".alert").css("display", "none")
+                    }, 2000)
+                    if (user["position"] > 0) {
+                        user["position"] = user["position"] - 1;
+                    }
                 }
             }
-          }
-          else {
-            let second_last_checkout_day = new Date(days[days.length - 2].time_of_sign_out);
-            if (second_last_checkout_day.getDate() != current_time.getDate()) {
-              if (current_time.getHours() - last_checkout_day.getHours() >= 12) {
-                checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
-              }
-              else {
-                // user attemped 2 checkouts in less than 12 hours
-                $(".alert").css("display", "block")
-                $(".alert").text("Sorry you can't checkout 2 times in less than 12 hours")
-                window.setTimeout(function(){
-                    $(".alert").css("display", "none")
-                },2000)
-                if (user["position"] > 0) {
-                    user["position"] = user["position"] - 1;
-                }
-              }
-            } else {
-              // user attemped 3 checkouts in a day
-              $(".alert").css("display", "block")
-                $(".alert").text("Sorry you can't checkout 3 times in a day")
-                window.setTimeout(function(){
-                    $(".alert").css("display", "none")
-                },2000)
-                if (user["position"] > 0) {
-                    user["position"] = user["position"] - 1;
-                }
-            }
-          }      
-      }
+        }
     }
     else {
-      checkout_total_minutes =  checkout_hours * 60 + checkout_minutes;
+        checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
     }
- 
+
     // return the difference
     // if the value is positive the person went to sleep before the goal
     // if negative they went to sleep after
@@ -89,7 +89,7 @@ function updateFuel(user_preferences, time_dif) {
     } else if (user_preferences["fuel"] > 0 && time_dif > 0) {
         // fuel is defined and non empty so just reduce fuel by time_dif 
         user_preferences["fuel"] = user_preferences["fuel"] - time_dif
-    } 
+    }
 }
 
 function updatePosition(user_preferences, late, time_dif) {
@@ -100,8 +100,8 @@ function updatePosition(user_preferences, late, time_dif) {
         user_preferences["position"] = user_preferences["position"] + 1;
         if (user_preferences["position"] >= 7) {
             user_preferences["position"] = 0;
-        } 
-    }   
+        }
+    }
 }
 
 function checkOut() {
@@ -112,7 +112,7 @@ function checkOut() {
 
     // get the user preferences
     let user_preferences = getItem("user", {})
-    
+
     let time_difference = getTimeDifference(user_preferences, current_time);
 
     if (time_difference < 0) {
@@ -161,7 +161,7 @@ function checkOut() {
     // append a new day to the array
     if (day != null) {
         days.push(day)
-    }  
+    }
 
     // send the days object to local storage
     setItem("days", days);
@@ -194,8 +194,8 @@ function submitPreferredSleepTime() {
     let date = new Date
     let hourGap = preferredHour - date.getHours()
     minGap = preferredMin - date.getMinutes()
-    
-    let totalGap = hourGap*60 + minGap
+
+    let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
         $(".timeUntil").text(totalGap + " minutes until checkout")
     } else if (totalGap < 0) {
@@ -203,16 +203,16 @@ function submitPreferredSleepTime() {
     }
     $(".alert").css("display", "flex")
     $(".alert").text("Your preferred time has been set!")
-    window.setTimeout(function(){
+    window.setTimeout(function () {
         $(".alert").css("display", "none")
-    },2000)
+    }, 2000)
 }
 
 function updateClock() {
     let date = new Date
     let dateString = String(date.getHours()) + ":"
     // add the minutes now
-    if (date.getMinutes() < 10){
+    if (date.getMinutes() < 10) {
         dateString += "0"
     }
     dateString += String(date.getMinutes())
@@ -227,8 +227,8 @@ function updateClock() {
 
     let hourGap = preferredHour - date.getHours()
     minGap = preferredMin - date.getMinutes()
-    
-    let totalGap = hourGap*60 + minGap
+
+    let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
         $(".timeUntil").text(totalGap + " minutes until checkout")
     } else if (totalGap < 0) {
@@ -238,33 +238,33 @@ function updateClock() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("#checkoutButton").click(function(){
+    $("#checkoutButton").click(function () {
         checkOut()
     })
-    $("#submitPreferredSleepTimeButton").click(function(){
+    $("#submitPreferredSleepTimeButton").click(function () {
         submitPreferredSleepTime()
     })
     // TODO: put in separate function for update time
     let date = updateClock()
     let seconds_until_next_minute = 60 - date.getSeconds()
     // set a timeout until the next minute and then start the interval
-    setTimeout(function() {
+    setTimeout(function () {
         // update time
         updateClock()
-        setInterval(function() {
+        setInterval(function () {
             updateClock()
         }, 60 * 1000)
     }, seconds_until_next_minute * 1000)
-    
-    
+
+
     restoreData()
 })
 
-function restoreData(){
+function restoreData() {
     let user = getItem("user", {})
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
-    if (isNaN(hours) && isNaN(mins)){
+    if (isNaN(hours) && isNaN(mins)) {
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
     }
@@ -274,17 +274,17 @@ function restoreData(){
     }
     if (!("position" in user)) {
         user["position"] = 0;
-    } 
+    }
     if (!("fuel" in user)) {
         user["fuel"] = 100
     }
     setItem("user", user)
     let inputString = ""
-    if (user["preferred-sleep-hour"] < 10){
+    if (user["preferred-sleep-hour"] < 10) {
         inputString += "0"
     }
     inputString += String(user["preferred-sleep-hour"]) + ":"
-    if (user["preferred-sleep-minute"] < 10){
+    if (user["preferred-sleep-minute"] < 10) {
         inputString += "0"
     }
     inputString += String(user["preferred-sleep-minute"])
