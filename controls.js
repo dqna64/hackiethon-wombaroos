@@ -261,6 +261,17 @@ document.addEventListener("DOMContentLoaded", function () {
     restoreData()
 })
 
+window.addEventListener('resize', resizeCanvas, false);
+
+// Resizing the canvas element will also
+// automatically clear the canvas contents so everything must be redrawn.
+// Also, Canvas CSS properties do not resize canvas, they rescale it.
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    updateCanvas(user_preferences)
+}
+
 function restoreData() {
     let user = getItem("user", {})
     let hours = user["preferred-sleep-hour"]

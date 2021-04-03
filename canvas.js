@@ -30,6 +30,9 @@ let user_preferences = {
 }
 
 function updateCanvas(user_preferences) {
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // For i is 1 to 6
     for (let i = 1; i < 7; i++) {
