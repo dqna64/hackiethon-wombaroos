@@ -107,6 +107,18 @@ function submitPreferredSleepTime() {
     setItem("user", user_preferences);
 }
 
+function updateClock() {
+    let date = new Date
+    let dateString = String(date.getHours()) + ":"
+    // add the minutes now
+    if (date.getMinutes() < 10){
+        dateString += "0"
+    }
+    dateString += String(date.getMinutes())
+    $(".dateTime").text(dateString)
+    return date
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     $("#checkoutButton").click(function(){
         checkOut()
@@ -114,18 +126,17 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#submitPreferredSleepTimeButton").click(function(){
         submitPreferredSleepTime()
     })
-    let date = new Date
-    let dateString = String(date.getHours()) + ": " + String(date.getMinutes())
-    $(".dateTime").text(dateString)
-    let seconds_until_next_minute = 60 - date.GetSeconds()
+    // TODO: put in separate function for update time
+    let date = updateClock()
+    let seconds_until_next_minute = 60 - date.getSeconds()
     // set a timeout until the next minute and then start the interval
     setTimeout(function() {
+        // update time
+        updateClock()
         setInterval(function() {
-            let date = new Date
-            let dateString = String(date.getHours()) + ": " + String    (date.getMinutes())
-            $(".dateTime").text(dateString)
+            updateClock()
         }, 60 * 1000)
-    }, seconds_until_next_minute)
+    }, seconds_until_next_minute * 1000)
     
     
     $("#submitPreferredSleepTimeButton").popover()
