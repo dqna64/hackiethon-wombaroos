@@ -90,6 +90,7 @@ textarea:focus, input:focus {
     text-align: center;
     margin: auto;
     color: white;
+    height: 23%;
 }
 
 .timeUntil {

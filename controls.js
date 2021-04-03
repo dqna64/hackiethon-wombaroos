@@ -162,10 +162,10 @@ function submitPreferredSleepTime() {
     minGap = preferredMin - date.getMinutes()
     
     let totalGap = hourGap*60 + minGap
-    if (totalGap < 0) {
-        $(".timeUntil").text(-totalGap + " minutes until checkout")
+    if (totalGap > 0) {
+        $(".timeUntil").text(totalGap + " minutes until checkout")
     } else {
-        $(".timeUntil").text(totalGap + " minutes have past, you've already lost " + totalGap + " bars of fuel so go to sleep soon if you can!")
+        $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
     $(".alert").css("display", "flex")
     $(".alert").text("Your preferred time has been set!")
@@ -195,10 +195,10 @@ function updateClock() {
     minGap = preferredMin - date.getMinutes()
     
     let totalGap = hourGap*60 + minGap
-    if (totalGap < 0) {
-        $(".timeUntil").text(-totalGap + " minutes until checkout")
+    if (totalGap > 0) {
+        $(".timeUntil").text(totalGap + " minutes until checkout")
     } else {
-        $(".timeUntil").text(totalGap + " minutes have past, you've already lost " + totalGap + " bars of fuel so go to sleep soon if you can!")
+        $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
     return date
 }
