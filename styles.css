@@ -19,6 +19,7 @@ html, body {
     text-align: center;
     margin: auto;
     font-size: xx-large;
+    color: white;
 }
 
 .streak{
@@ -58,6 +59,7 @@ html, body {
 
 #submitPreferredSleepTimeButton{
     background-color: #f77b3c;
+    color: white;
 }
 
 #checkoutButton {
