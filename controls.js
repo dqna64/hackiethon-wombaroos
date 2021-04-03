@@ -191,6 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     $("#submitPreferredSleepTimeButton").popover()
+    $('.popover-dismiss').popover({
+        trigger: 'focus'
+      })
     restoreData()
 })
 
