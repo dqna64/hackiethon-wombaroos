@@ -5,13 +5,33 @@ let ctx = canvas.getContext("2d")
 drawRocket(0)
 drawRocket(300)
 
+drawPlanet('A')
+drawPlanet('B')
+
 // draw rocket at position x and y
 function drawRocket(y) {
     let x = (canvas.width - 150) / 2
     let image = new Image();
     image.onload = function () {
-        console.log("hi")
+        console.log("Displaying rocket")
         ctx.drawImage(image, x, y, 150, 150);
     };
     image.src = "graphics/assets/rocket.png";
+}
+
+function drawPlanet(planetType) {
+    let x = (canvas.width - 192) / 2
+    let y;
+    if (planetType == 'A') {
+        y = canvas.height - 48
+    } else if (planetType == 'B') {
+        y = 48
+    }
+    let image = new Image();
+    image.onload = function () {
+        console.log("Displaying planet " + planetType)
+        // Draw planets at 256x256 pixels 
+        ctx.drawImage(image, x, y, 192, 192);
+    };
+    image.src = "graphics/assets/jupiter.png";
 }
