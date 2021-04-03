@@ -34,7 +34,7 @@ class Planet {
         // planetMask.pop();
         // image(planetMask, 0, 0)
 
-        image(this.img, 0, 0);
+        image(this.img, -this.r, -this.r, this.r * 2, this.r * 2);
         // fill(this.c1);
         // circle(0, 0, this.r);
         pop();

@@ -11,11 +11,13 @@ let planet1_img;
 let planet1;
 let planet2_img;
 let planet2;
+let rocket_img;
 let rocket;
 
 function preload() {
-    planet1_img = loadImage('/assets/jupiter.png');
-    planet2_img = loadImage('/assets/neptune.png');
+    planet1_img = loadImage('/graphics/assets/jupiter.png');
+    planet2_img = loadImage('/graphics/assets/neptune.png');
+    rocket_img = loadImage('/graphics/assets/rocket.png');
 
 }
 
@@ -30,8 +32,8 @@ function setup() {
     // colorMode(RGB);
     planet1 = new Planet(DIS_WIDTH / 2, DIS_HEIGHT - PLANET_YOFF, PLANET_RAD, planet1_img);
 
-    planet2 = new Planet(DIS_WIDTH / 2, PLANET_YOFF, PLANET_RAD);
-    rocket = new Rocket();
+    planet2 = new Planet(DIS_WIDTH / 2, PLANET_YOFF, PLANET_RAD, planet2_img);
+    rocket = new Rocket(DIS_WIDTH / 2, DIS_HEIGHT - PLANET_YOFF - 150, 80, 80, rocket_img);
 
 }
 
@@ -39,10 +41,11 @@ function draw() {
     background(20);
     // stroke(0);
     // strokeWeight(2);
-    image(planet1_img, 0, 0);
+    // image(planet1_img, 0, 0);
 
     planet1.display();
     planet2.display();
+    rocket.display();
 
 }
 

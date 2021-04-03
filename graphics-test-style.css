@@ -15,7 +15,7 @@ body {
 }
 
 #canvas-container {
-    background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));
+    /* background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222)); */
     width: 840px;
     height: 720px;
 }

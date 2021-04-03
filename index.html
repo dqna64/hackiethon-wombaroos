@@ -6,6 +6,19 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/graphics-test-style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
+    <!-- <script src="../p5.js"></script>
+    <script src="../p5.dom.min.js"></script>
+    <script src="../p5.sound.min.js"></script> -->
+    <script src="/graphics/Planet.js"></script>
+    <script src="/graphics/Rocket.js"></script>
+    <script src="/graphics-sketch.js"></script>
+
 </head>
 <body style="background-image: url(https://media.discordapp.net/attachments/827452309985558551/827790652506898453/wp4829415.png);">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -20,7 +33,7 @@
         </button>
       </div>
         <div class="row mainDiv m-5">
-            <div class="d-inline-flex col-6 rocket">rocket stuff</div>
+            <div class="d-inline-flex col-6 rocket" id="canvas-container">rocket stuff</div>
             <div class="col-6 flex-col">
                 <div class="rowElement date">
                     <div class="dateTime"></div>
