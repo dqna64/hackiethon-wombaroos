@@ -50,8 +50,6 @@ function getTimeDifference(user, current_time) {
 
 function updateFuel() {
     let user_preferences = getItem("user", {})
-    console.log(user_preferences["fuel"])
-    console.log(typeof user_preferences["fuel"])
 }
 
 function checkOut() {
@@ -75,14 +73,11 @@ function checkOut() {
     } else {
         // check how many increments of 10 minutes after they have gone past
         let light_years_decrement = Math.floor(time_difference % 10)
-        console.log(light_years_decrement)
-        console.log(time_difference)
 
         // reset the streak
         user_preferences["streak"] = 0
     }
 
-    console.log(user_preferences["streak"])
     // update html to show the new streak
     $(".currentStreak").text(user_preferences["streak"])
     // upload preferences to local storage
@@ -114,7 +109,6 @@ function submitPreferredSleepTime() {
     }
     user_preferences["preferred-sleep-hour"] = hours
     user_preferences["preferred-sleep-minute"] = minutes;
-    console.log(user_preferences)
     setItem("user", user_preferences);
 }
 
@@ -181,6 +175,10 @@ function restoreData(){
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
     }
+    if (!("streak" in user)) {
+        // set streak to 0
+        user["streak"] = 0
+    }
     setItem("user", user)
     let inputString = ""
     if (user["preferred-sleep-hour"] < 10){
@@ -192,4 +190,7 @@ function restoreData(){
     }
     inputString += String(user["preferred-sleep-minute"])
     $("#submitPreferredSleepTimeInput").val(inputString)
+
+    // display the streak
+    $(".currentStreak").text(user["streak"])
 }
