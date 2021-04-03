@@ -35,14 +35,15 @@ html, body {
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
     border-radius: 0.25rem;
 }
 
 .dateTime {
     text-align: center;
-    margin: auto;
     font-size: xx-large;
     color: white;
+    flex-direction: column;
 
 }
 
@@ -66,4 +67,12 @@ html, body {
 #checkoutText {
     text-align: center;
     margin: auto
+}
+
+.timeUntil{
+    /* position: relative;
+    bottom: -40%;
+    right: 50%; */
+    text-align: center;
+    color: white;
 }
