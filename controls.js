@@ -66,7 +66,7 @@ function checkOut() {
 
     console.log(user_preferences["streak"])
     // update html to show the new streak
-    $(".currentStreak").text(user_preferences["streak"])
+    $("#currentStreak").text(user_preferences["streak"])
     // upload preferences to local storage
     setItem("user", user_preferences)
 
