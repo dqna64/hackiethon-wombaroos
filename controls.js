@@ -79,11 +79,23 @@ function getTimeDifference(user, current_time) {
 function updateFuel(user_preferences, time_dif) {
     // check if the fuel key exists
     if (!("fuel" in user_preferences)) {
-        user_preferences["fuel"] = 100;
+        user_preferences["fuel"] = 100
     } else if (user_preferences["fuel"] > 0 && time_dif > 0) {
-        // fuel is defined and non empty so just reduce fuel by  
-        user_preferences["fuel"] = user_preferences["fuel"] - time_dif;
+        // fuel is defined and non empty so just reduce fuel by time_dif 
+        user_preferences["fuel"] = user_preferences["fuel"] - time_dif
     } 
+}
+
+function updatePosition(user_preferences, late, time_dif) {
+    if (user_preferences["fuel"] <= 0) {
+        user_preferences["position"] = 0;
+        user_preferences["fuel"] = 100;
+    } else if (!late) {
+        user_preferences["position"] = user_preferences["position"] + 1;
+        if (user_preferences["position"] >= 7) {
+            user_preferences["position"] = 0;
+        } 
+    }   
 }
 
 function checkOut() {
@@ -111,10 +123,7 @@ function checkOut() {
         // this indicates the checkout wasn't done and an alert happened
         // so just do nothing lmao
     } else {
-        // check how many increments of 10 minutes after they have gone past
-        //let light_years_decrement = Math.floor(time_difference % 10)
-        //console.log(light_years_decrement)
-        //console.log(time_difference)
+        // this means the user is late so decrement fuel
         late = true;
 
         day = {
@@ -124,15 +133,15 @@ function checkOut() {
         // reset the streak
         user_preferences["streak"] = 0
 
-        // remove the fuel key so updateFuel puts it back to 100
-        delete user_preferences["fuel"]
+        updateFuel(user_preferences, time_difference);
     }
 
-    updateFuel(user_preferences, time_difference);
-    updatePosition(user_preferences, late);
+    updatePosition(user_preferences, late, time_difference);
 
     // update html to show the new streak
     $(".currentStreak").text(user_preferences["streak"])
+    $(".currentFuel").text("Current Fuel: " + user_preferences["fuel"])
+    $(".currentPosition").text("Current Position: " + user_preferences["position"])
     // upload preferences to local storage
     setItem("user", user_preferences)
 
@@ -186,20 +195,6 @@ function submitPreferredSleepTime() {
     window.setTimeout(function(){
         $(".alert").css("display", "none")
     },2000)
-}
-
-function updatePosition(user_preferences, late, time_dif) {
-    if (user_preferences["fuel"] <= 0) {
-        user_preferences["position"] = 0;
-        user_preferences["fuel"] = 100;
-    } else if (!late) {
-        console.log(user_preferences["position"])
-        user_preferences["position"] = user_preferences["position"] + 1;
-        console.log(user_preferences["position"])
-        if (user_preferences["position"] >= 7) {
-            user_preferences["position"] = 0;
-        } 
-    }   
 }
 
 function updateClock() {
@@ -256,34 +251,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function restoreData(){
     let user = getItem("user", {})
-        let hours = user["preferred-sleep-hour"]
-        let mins = user["preferred-sleep-minute"]
-        if (isNaN(hours) && isNaN(mins)){
-            user["preferred-sleep-hour"] = 22
-            user["preferred-sleep-minute"] = 0
-        }
-        if (!("streak" in user)) {
-            // set streak to 0
-            user["streak"] = 0
-        }
-        if (!("position" in user)) {
-            user["position"] = 0;
-        } 
-        if (!("fuel" in user)) {
-            user["fuel"] = 100
-        }
-        setItem("user", user)
-        let inputString = ""
-        if (user["preferred-sleep-hour"] < 10){
-            inputString += "0"
-        }
-        inputString += String(user["preferred-sleep-hour"]) + ":"
-        if (user["preferred-sleep-minute"] < 10){
-            inputString += "0"
-        }
-        inputString += String(user["preferred-sleep-minute"])
-        $("#submitPreferredSleepTimeInput").val(inputString)
+    let hours = user["preferred-sleep-hour"]
+    let mins = user["preferred-sleep-minute"]
+    if (isNaN(hours) && isNaN(mins)){
+        user["preferred-sleep-hour"] = 22
+        user["preferred-sleep-minute"] = 0
+    }
+    if (!("streak" in user)) {
+        // set streak to 0
+        user["streak"] = 0
+    }
+    if (!("position" in user)) {
+        user["position"] = 0;
+    } 
+    if (!("fuel" in user)) {
+        user["fuel"] = 100
+    }
+    setItem("user", user)
+    let inputString = ""
+    if (user["preferred-sleep-hour"] < 10){
+        inputString += "0"
+    }
+    inputString += String(user["preferred-sleep-hour"]) + ":"
+    if (user["preferred-sleep-minute"] < 10){
+        inputString += "0"
+    }
+    inputString += String(user["preferred-sleep-minute"])
+    $("#submitPreferredSleepTimeInput").val(inputString)
 
-        // display the streak
-        $(".currentStreak").text(user["streak"])
+    // display the streak
+    $(".currentStreak").text(user["streak"])
+
+    // display fuel and position
+    $(".currentFuel").text("Current Fuel: " + user["fuel"])
+    $(".currentPosition").text("Current Position: " + user["position"])
 }

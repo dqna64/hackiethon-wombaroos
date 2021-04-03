@@ -10,7 +10,6 @@ function drawRocket(y) {
     let x = (canvas.width - 150) / 2
     let image = new Image();
     image.onload = function () {
-        console.log("hi")
         ctx.drawImage(image, x, y, 150, 150);
     };
     image.src = "graphics/assets/rocket.png";

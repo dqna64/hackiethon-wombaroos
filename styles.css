@@ -133,3 +133,7 @@ canvas {
     width: 800px; 
     height: 800px;
 }
+
+.currentFuel, .currentPosition {
+    color: white;
+}
