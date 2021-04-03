@@ -24,12 +24,17 @@ function getTimeDifference(user, current_time) {
       } else if (diffDays > 1) {
         checkout_total_minutes = (diffDays - 1) * 24 * 60 + checkout_hours * 60 + checkout_minutes;
       } else {
+          if (days.length - 2 < 0) {
+            checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
+          }
+          else {
             let second_last_checkout_day = new Date(days[days.length - 2].time_of_sign_out);
             if (second_last_checkout_day.getDate() != current_time.getDate()) {
                 checkout_total_minutes = checkout_hours * 60 + checkout_minutes;
             } else {
                 alert("STOP CHEATING!!!");
             }
+          }      
       }
     }
     else {
@@ -41,6 +46,12 @@ function getTimeDifference(user, current_time) {
     // if negative they went to sleep after
 
     return (checkout_total_minutes - preferred_total_minutes);
+}
+
+function updateFuel() {
+    let user_preferences = getItem("user", {})
+    console.log(user_preferences["fuel"])
+    console.log(typeof user_preferences["fuel"])
 }
 
 function checkOut() {
