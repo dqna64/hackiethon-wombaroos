@@ -26,6 +26,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="storage.js"></script>
     <script src="controls.js"></script>
+    
     <div class="alert alert-warning alert-dismissible fade show m-auto mt-2 w-50" style="z-index: 5;" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,7 +34,9 @@
         </button>
       </div>
         <div class="row mainDiv m-5">
-            <div class="d-inline-flex col-6 rocket" id="canvas-container"></div>
+            <div class="d-inline-flex col-6 rocket" id="canvas-container">
+                <canvas id="myCanvas" width="400" height="400">my canvas</canvas>
+            </div>
             <div class="col-6 flex-col">
                 <div class="rowElement date">
                     <div class="dateTime"></div>
@@ -59,7 +62,7 @@
                 </div>
             </div>
         </div>
-    
+    <script src="canvas.js"></script>
 </body>
 
 </html>
