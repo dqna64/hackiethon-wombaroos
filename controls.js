@@ -80,6 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#submitPreferredSleepTimeButton").click(function(){
         submitPreferredSleepTime()
     })
+    updateClock()
+
+    
+
+
+})
+
+function updateClock(){
     let date = new Date
     let dateString = String(date.getHours()) + " : " 
     if (date.getMinutes() < 10){
@@ -87,4 +95,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     dateString = dateString + String(date.getMinutes())
     $(".dateTime").text(dateString)
-})
+    setTimeout(updateClock,10000)
+}
