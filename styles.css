@@ -119,10 +119,12 @@ textarea:focus, input:focus {
 }
 
 #canvas-container {
-    background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));
+    /*background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));*/
+    background:transparent;
 }
 
 canvas {
+
     border: 2px #a9ebe0 solid;
 
     padding-left: 0;
