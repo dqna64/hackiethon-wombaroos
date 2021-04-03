@@ -7,11 +7,47 @@
 
 body {
     font-family: "Nunito Sans", sans-serif;
-    background: rgb(29, 29, 29);
+    background-color: rgb(29, 29, 29);
 }
 
 .graphics-container {
     background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));
     width: 50%;
     height: 580px;
+}
+
+/* $green: #88ce02;
+$dark: #262626; */
+
+
+h1 {
+  font-size: 16px;
+  width: 300px;
+  color: #838484;
+  font-weight: 300;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 10px 20px;
+  z-index: 100;
+  background-color: #262626;
+  border: 1px solid transparentize(white, .7);
+}
+
+h1.span {
+    color: #89c540;
+}
+
+h1.strong {
+    color: #fff;
+}
+
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px #232323 solid;
 }
