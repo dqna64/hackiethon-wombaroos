@@ -92,3 +92,7 @@ html, body {
 .fireNumber {
     padding-left: 0;
 }
+
+.time{
+    border-radius: 0.25rem;
+}
