@@ -1,11 +1,13 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d")
 
-drawRocket(0, 0)
-drawRocket(200, 200)
+// just draw with the y coordinate
+drawRocket(0)
+drawRocket(200)
 
 // draw rocket at position x and y
-function drawRocket(x, y) {
+function drawRocket(y) {
+    let x = (canvas.width - 150) / 2
     let image = new Image();
     image.onload = function() {
         console.log("hi")
