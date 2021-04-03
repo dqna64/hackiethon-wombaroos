@@ -30,8 +30,11 @@ function getTimeDifference(user, current_time) {
             }
             else {
                 // user attemped 2 checkouts in less than 12 hours
-                $("#checkoutText").attr('title', "Sorry you can't checkout 2 times in less than 12 hours")
-                $("#checkoutText").popover('show')
+                $(".alert").css("display", "block")
+                $(".alert").text("Sorry you can't checkout 2 times in less than 12 hours")
+                window.setTimeout(function(){
+                    $(".alert").css("display", "none")
+                },2000)
             }
           }
           else {
@@ -42,13 +45,19 @@ function getTimeDifference(user, current_time) {
               }
               else {
                 // user attemped 2 checkouts in less than 12 hours
-                $("#checkoutText").attr('title', "Sorry you can't checkout 2 times in less than 12 hours")
-                $("#checkoutText").popover('show')
+                $(".alert").css("display", "block")
+                $(".alert").text("Sorry you can't checkout 2 times in less than 12 hours")
+                window.setTimeout(function(){
+                    $(".alert").css("display", "none")
+                },2000)
               }
             } else {
               // user attemped 3 checkouts in a day
-              $("#checkoutText").attr('title', "Sorry you can't checkout 3 times in a day")
-              $("#checkoutText").popover('show')
+              $(".alert").css("display", "block")
+                $(".alert").text("Sorry you can't checkout 3 times in a day")
+                window.setTimeout(function(){
+                    $(".alert").css("display", "none")
+                },2000)
             }
           }      
       }
@@ -143,6 +152,11 @@ function submitPreferredSleepTime() {
     user_preferences["preferred-sleep-minute"] = minutes;
     console.log(user_preferences)
     setItem("user", user_preferences);
+    $(".alert").css("display", "flex")
+    $(".alert").text("Your preferred time has been set!")
+    window.setTimeout(function(){
+        $(".alert").css("display", "none")
+    },2000)
 }
 
 function updateClock() {
@@ -190,10 +204,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, seconds_until_next_minute * 1000)
     
     
-    $("#submitPreferredSleepTimeButton").popover()
-    $('.popover-dismiss').popover({
-        trigger: 'focus'
-      })
     restoreData()
 })
 

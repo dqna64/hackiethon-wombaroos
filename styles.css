@@ -24,14 +24,14 @@ html, body {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: #79B4A9;
+    background-color: #ff317e;
     border-radius: 0.25rem;
     
     
 }
 .date{
     height: 28%;
-    background-color: darkslategray;
+    background-color: #139ecc;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -55,6 +55,10 @@ html, body {
     width: 100%;
 }
 
+#submitPreferredSleepTimeButton{
+    background-color: #f77b3c;
+}
+
 #checkoutButton {
     height: 23%;
     margin-top: 8px;
@@ -62,12 +66,13 @@ html, body {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: #C33C54;
+    background-color: #621867;
 }
 
 #checkoutText {
     text-align: center;
-    margin: auto
+    margin: auto;
+    color: white;
 }
 
 .timeUntil{
@@ -76,4 +81,10 @@ html, body {
     right: 50%; */
     text-align: center;
     color: white;
+}
+
+.alert{
+    position: relative;
+    top: 10px;
+    display: none;
 }
