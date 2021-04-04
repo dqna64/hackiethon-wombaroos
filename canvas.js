@@ -26,7 +26,7 @@ let allPlanets = [
 
 function updateCanvas(user_preferences) {
 
-    ctx.canvas.width = window.innerWidth
+    ctx.canvas.width = $("#canvas-container").width()
     ctx.canvas.height = $("#mainDiv").height();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
