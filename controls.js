@@ -110,6 +110,10 @@ function updatePosition(user_preferences, late) {
             user_preferences["position"] = 0;
             user_preferences["currentPlanetA"] = user_preferences["currentPlanetB"];
             user_preferences["currentPlanetB"] = Math.floor(Math.random() * 8);
+            user_preferences["fuel"] = 100
+            $('.progress-bar').css('width', user["fuel"] + '%').attr('aria-valuenow', user["fuel"]);
+
+
 
         }
     }
