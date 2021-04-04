@@ -31,14 +31,14 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: #b34180;
+    background-color: #1b2021;
     border-radius: 0.25rem;
     width: 45%;
     margin: 5px;
 }
 .date {
     height: 28%;
-    background-color: #139ecc;
+    background-color: #2F4E6F;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -69,7 +69,6 @@ textarea:focus, input:focus {
 
 .setTime {
     border-size: 10px;
-    border-color: #dc7aff;
     height: 5%;
 }
 
@@ -83,17 +82,17 @@ textarea:focus, input:focus {
 }
 
 #submitPreferredSleepTimeButton {
-    background-color: #f77b3c;
+    background-color: #98B1C4;
     color: white;
     border-color: none;
 }
 
 #submitPreferredSleepTimeButton:hover {
-    background-color: #bb5c2d;
+    background-color: #7a848d;
 }
 
 #submitPreferredSleepTimeButton:active {
-    background-color: #612f16;
+    background-color: #98B1C4;
 }
 
 #checkoutButton {
@@ -103,15 +102,15 @@ textarea:focus, input:focus {
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: #621867;
+    background-color: #E15119;
 }
 
 #checkoutButton:hover {
-    background-color: #3c0f3f;
+    background-color: #a8441d;
 }
 
 #checkoutButton:active {
-    background-color: #2b092e;
+    background-color: #5b2510;
 }
 
 #checkoutText {
@@ -176,7 +175,7 @@ canvas {
 }
 
 #totalPlanets{
-    background-color: teal;
+    background-color: #1b2021;
     border-radius: 0.25rem;
     display: flex;
     align-items: center;
