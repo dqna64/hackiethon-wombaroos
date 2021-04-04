@@ -24,11 +24,6 @@ let allPlanets = [
     'uranus'
 ]
 
-// Test user_preferences object
-let user_preferences = {
-    'position': 4,
-}
-
 function updateCanvas(user_preferences) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // For i is 1 to 6
