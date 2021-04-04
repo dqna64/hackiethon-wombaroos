@@ -25,3 +25,5 @@ This web app is set up in a way that the user cannot click 'Sleep Now' multiple 
 To get to the local storage in the browser tab, press F12 -> open the "Application" tab -> click "Local Storage" -> click "https://sleepspace.tk".
 
 You need to change the last "time_of_sign_out" in the "days" array to any date before the current date in order to be able to checkout. E.g. Change `{"time_of_sign_out":"2021-04-04T21:05:09.945Z"}` -> `{"time_of_sign_out":"2021-04-03T21:05:09.945Z"}` where the difference is the date `04` -> `03`.
+
+Then reload the page with `Ctrl-R`.
