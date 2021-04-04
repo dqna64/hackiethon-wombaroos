@@ -87,9 +87,11 @@ function updateFuel(user_preferences, time_dif) {
     // check if the fuel key exists
     if (!("fuel" in user_preferences)) {
         user_preferences["fuel"] = 100
+        $('.progress-bar').css('width', 100+'%').attr('aria-valuenow', 100);
     } else if (user_preferences["fuel"] > 0 && time_dif > 0) {
         // fuel is defined and non empty so just reduce fuel by time_dif 
-        user_preferences["fuel"] = user_preferences["fuel"] - time_dif
+        user_preferences["fuel"] = user_preferences["fuel"] - time_dif;
+        $('.progress-bar').css('width', user_preferences["fuel"]+'%').attr('aria-valuenow', user_preferences["fuel"]);
     }
 }
 
@@ -97,10 +99,11 @@ function updatePosition(user_preferences, late, time_dif) {
     if (user_preferences["fuel"] <= 0) {
         user_preferences["position"] = 0;
         user_preferences["fuel"] = 100;
+        $('.progress-bar').css('width', user_preferences["fuel"]+'%').attr('aria-valuenow', user_preferences["fuel"]);
         if (user_preferences["planetCount"] >= 1){
             user_preferences["planetCount"] -= 1
         }
-    } else if (!late) {
+    } else {
         user_preferences["position"] = user_preferences["position"] + 1;
         if (user_preferences["position"] >= 7) {
             user_preferences["planetCount"] += 1
@@ -297,6 +300,7 @@ function restoreData() {
     }
     if (!("fuel" in user)) {
         user["fuel"] = 100
+        $('.progress-bar').css('width', user["fuel"]+'%').attr('aria-valuenow', user["fuel"]);
     }
     if (!("currentPlanetA" in user)) {
         // Get a random integer in range 0 - 7 inclusive,

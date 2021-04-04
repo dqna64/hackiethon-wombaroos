@@ -130,9 +130,6 @@ textarea:focus, input:focus {
 }
 
 canvas {
-
-    border: 2px #242424 solid;
-
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
@@ -187,4 +184,17 @@ canvas {
     position: relative;
     bottom: 24px;
 
+}
+
+#fuelContainer {
+    position: relative;
+    display: flex;
+    top: -20px;
+    left: 1%;
+    width: 30%;
+}
+
+#fuelIcon {
+    display: flex;
+    width: 15%;
 }
