@@ -156,7 +156,7 @@ function checkOut() {
     $(".currentStreak").text(user_preferences["streak"])
     $(".currentFuel").text("Current Fuel: " + user_preferences["fuel"])
     $(".currentPosition").text("Current Position: " + user_preferences["position"])
-    $("#totalPlanets").text("You have travelled to " + user_preferences["planetCount"] + " planets")
+    $("#totalPlanetsText").text(user_preferences["planetCount"])
     // updateCanvas
     updateCanvas(user_preferences)
 
