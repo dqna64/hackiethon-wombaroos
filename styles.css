@@ -152,7 +152,7 @@ canvas {
     border-radius: 0.25rem;
     display: flex;
     align-items: center;
-    width: 45%;
+    width: 49%;
     margin: 5px;
     flex-direction: column;
 }
@@ -197,4 +197,12 @@ canvas {
 #fuelIcon {
     display: flex;
     width: 15%;
+}
+
+.separator {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+    50% { opacity: 0; }
 }

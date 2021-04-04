@@ -221,13 +221,13 @@ function submitPreferredSleepTime() {
 
 function updateClock() {
     let date = new Date
-    let dateString = String(date.getHours()) + ":"
+    let dateString = String(date.getHours()) + "<span class=\"separator\">:</span>"
     // add the minutes now
     if (date.getMinutes() < 10) {
         dateString += "0"
     }
     dateString += String(date.getMinutes())
-    $(".dateTime").text(dateString)
+    $(".dateTime").html(dateString)
 
     let user = getItem("user", {})
     let preferredHour = user["preferred-sleep-hour"]
