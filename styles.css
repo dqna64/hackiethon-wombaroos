@@ -44,6 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 0.25rem;
+    opacity: 0.8;
 }
 
 .dateTime {
@@ -143,7 +144,7 @@ textarea:focus, input:focus {
 #canvas-container {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgba(3, 7, 20, 0.7), rgb(16, 44, 125, 0.7));
+    background-image: linear-gradient(rgba(3, 7, 20, 0.7), rgb(104, 116, 130, 0.7));
     /*background: transparent; */
     border: 2px white solid;
     border-radius: 0.25rem;
