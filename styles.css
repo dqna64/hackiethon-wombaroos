@@ -153,4 +153,13 @@ canvas {
     background-color: teal;
     height: 10%;
     border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#totalPlanetsText{
+    text-align: center;
+    margin: auto;
+    color: white;
 }

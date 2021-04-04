@@ -97,6 +97,9 @@ function updatePosition(user_preferences, late, time_dif) {
     if (user_preferences["fuel"] <= 0) {
         user_preferences["position"] = 0;
         user_preferences["fuel"] = 100;
+        if (user_preferences["planetCount"] >= 1){
+            user_preferences["planetCount"] -= 1
+        }
     } else if (!late) {
         user_preferences["position"] = user_preferences["position"] + 1;
         if (user_preferences["position"] >= 7) {
@@ -153,7 +156,7 @@ function checkOut() {
     $(".currentStreak").text(user_preferences["streak"])
     $(".currentFuel").text("Current Fuel: " + user_preferences["fuel"])
     $(".currentPosition").text("Current Position: " + user_preferences["position"])
-
+    $("#totalPlanets").text("You have travelled to " + user_preferences["planetCount"] + " planets")
     // updateCanvas
     updateCanvas(user_preferences)
 
@@ -332,6 +335,9 @@ function restoreData() {
     $(".currentPosition").text("Current Position: " + user["position"])
     $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
     $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
+
+    $("#totalPlanetsText").text("You have travelled to " + user["planetCount"] + " planets")
+
     console.log(user)
     updateCanvas(user)
 }
