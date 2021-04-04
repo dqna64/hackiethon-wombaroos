@@ -287,6 +287,7 @@ function restoreData() {
     let user = getItem("user", {})
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
+    $('.progress-bar').css('width', user["fuel"]+'%').attr('aria-valuenow', user["fuel"]);
     if (isNaN(hours) && isNaN(mins)) {
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
