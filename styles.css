@@ -68,7 +68,7 @@ textarea:focus, input:focus {
 }
 
 .setTime {
-    border-size: 10px;
+    border: none!important;
     height: 5%;
 }
 
@@ -92,7 +92,7 @@ textarea:focus, input:focus {
 }
 
 #submitPreferredSleepTimeButton:active {
-    background-color: #98B1C4;
+    background-color: #3b454d;
 }
 
 #checkoutButton {
@@ -103,6 +103,7 @@ textarea:focus, input:focus {
     align-items: center;
     display: flex;
     background-color: #E15119;
+    animation: colorChanger 4s linear infinite;
 }
 
 #checkoutButton:hover {
@@ -233,4 +234,8 @@ canvas {
 
 @keyframes blinker {  
     50% { opacity: 0; }
+}
+
+@keyframes colorChanger {  
+    50% { background-color: #903749; }
 }
