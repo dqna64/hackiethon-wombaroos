@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-    height: 80%;
+    height: 76%;
 }
 
 .rocket {
@@ -109,11 +109,10 @@ textarea:focus, input:focus {
 
 .alert {
     position: absolute;
-    right: 25%;
-    width: 10px;
-
-    z-index: 10;
-    top: -4%;
+    left: 33%;
+    width: 35%;
+    text-align: center;
+    top: 14%;
     display: none;
 }
 .fireNumber {
@@ -141,6 +140,14 @@ canvas {
     left: 50%;
     transform: translate(-30%, 0%);
 
+}
+
+.mainTitle {
+    text-align: center;
+    color: white;
+    padding-top: 1%;
+    height: 5%;
+    font-family: 'Fredoka One', cursive;
 }
 
 .currentFuel, .currentPosition, .currentPlanetA, .currentPlanetB {
