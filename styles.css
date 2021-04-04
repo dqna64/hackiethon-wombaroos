@@ -1,17 +1,18 @@
 html, body {
     height: 100%;
     font-family: 'Nunito', sans-serif;
+    position: relative;
 }
 
 .rocket {
     /* background-color: burlywood; */
     max-width: 50%;
 }
-.mainDiv{
+.mainDiv {
     height: 90%;
 }
 
-.rowElement{
+.rowElement {
     height: 33%;
 }
 
@@ -22,7 +23,7 @@ html, body {
     color: white;
 }
 
-.streak{
+.streak {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -31,7 +32,7 @@ html, body {
     
     
 }
-.date{
+.date {
     height: 28%;
     background-color: #139ecc;
     justify-content: center;
@@ -49,15 +50,30 @@ html, body {
 
 }
 
-.setTime{
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.time {
+    -moz-border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    border-radius: 0.25rem;
+    outline:none;
+    border: 0px solid red;
+    color: #000000;
+}
+
+.setTime {
+    border-size: 10px;
+    border-color: #dc7aff;
     height: 5%;
 }
 
-#submitPreferredSleepTimeInput{
+#submitPreferredSleepTimeInput {
     width: 100%;
 }
 
-#submitPreferredSleepTimeButton{
+#submitPreferredSleepTimeButton {
     background-color: #f77b3c;
     color: white;
 }
@@ -76,9 +92,10 @@ html, body {
     text-align: center;
     margin: auto;
     color: white;
+    height: 23%;
 }
 
-.timeUntil{
+.timeUntil {
     /* position: relative;
     bottom: -40%;
     right: 50%; */
@@ -86,15 +103,43 @@ html, body {
     color: white;
 }
 
-.alert{
-    position: relative;
-    top: 10px;
+.alert {
+    position: absolute;
+    right: 25%;
+    width: 10px;
+
+    z-index: 10;
+    top: -4%;
     display: none;
 }
 .fireNumber {
     padding-left: 0;
 }
 
-.time{
-    border-radius: 0.25rem;
+#canvas-container {
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));
+    /* background: transparent; */
+}
+
+canvas {
+
+    border: 2px #242424 solid;
+
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /* width: 100%; */
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, 0%);
+
+}
+
+.currentFuel, .currentPosition, .currentPlanetA, .currentPlanetB {
+    color: white;
 }

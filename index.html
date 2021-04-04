@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sleep space</title>
+    <title>Sleep Space</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script> -->
+    <!-- <script src="../p5.js"></script>
+    <script src="../p5.dom.min.js"></script>
+    <script src="../p5.sound.min.js"></script> -->
+
+    <!-- <script src="graphics/Planet.js"></script>
+    <script src="graphics/Rocket.js"></script> -->
+    <!-- <script src="graphics-sketch.js"></script> -->
+
+
 </head>
-<body style="background-image: url(https://media.discordapp.net/attachments/827452309985558551/827790652506898453/wp4829415.png);">
+<body style="background-image: url(graphics/assets/bg.png);">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="storage.js"></script>
-    <script src="controls.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+    
     <div class="alert alert-warning alert-dismissible fade show m-auto mt-2 w-50" style="z-index: 5;" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-        <div class="row mainDiv m-5">
-            <div class="d-inline-flex col-6 rocket">rocket stuff</div>
-            <div class="col-6 flex-col">
-                <div class="rowElement date">
-                    <div class="dateTime"></div>
-                    <div class="timeUntil"></div>
-                </div>
-        
-                <div class="row m-1">
-                    <input type="time" class="d-inline-flex m-2 col time" id="submitPreferredSleepTimeInput">
-                    <div class="btn btn-warning d-block setTime m-2 col" id="submitPreferredSleepTimeButton">Set Preferred Time</div>
-                </div>
-                <div class="btn rowElement" id="checkoutButton">
-                    <div id="checkoutText">
-                        Checkout button
-                    </div>
-                </div>
-                <div class="d-flex rowElement streak">
-                    <div class="col">
-                        <svg class="float-right" height="64" viewBox="0 0 512 512" width="64" xmlns="http://www.w3.org/2000/svg"><g id="flat"><path d="m276 116a107.37 107.37 0 0 1 20 62.409v21.591a30.739 30.739 0 0 0 29.821-23.283l2.179-8.717 5.912 7.095a63 63 0 0 1 -.564 81.333 22.147 22.147 0 0 0 1.152 30.072 22.147 22.147 0 0 0 32.955-1.826l16.545-20.674 16 40a139.835 139.835 0 0 1 -35.059 139.059l-2.018 2.018a146.549 146.549 0 0 1 -103.623 42.923h-16.325a146.549 146.549 0 0 1 -125.665-71.15 146.551 146.551 0 0 1 12.681-168.734l64.764-78.4a53.884 53.884 0 0 0 7.7-56.2 53.883 53.883 0 0 1 19.345-66.716l34.2-22.8v29.591a107.37 107.37 0 0 0 20 62.409z" fill="#e82f3e"/><path d="m315.077 433.411.071-.071a99.417 99.417 0 0 0 25.025-97.34l-23.273 23.274a23.652 23.652 0 0 1 -33.451 0 23.653 23.653 0 0 1 -1.449-31.868 62.507 62.507 0 0 0 7.889-67.971l-37.716-75.435-5.8 63.8a57.053 57.053 0 0 1 -21.173 39.382l-32.973 26.379a74.736 74.736 0 0 0 -28.049 58.36v9.079a74.74 74.74 0 0 0 26.891 57.415 74.741 74.741 0 0 0 48.584 17.319l23.118-.229a74.734 74.734 0 0 0 52.306-22.094z" fill="#ea9d2d"/><path d="m120 192a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#ff6268"/><path d="m144 152a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#e82f3e"/><path d="m112 120a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#961b20"/><path d="m392 216a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#e82f3e"/><path d="m368 160a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#ff6268"/><path d="m400 136a8 8 0 0 1 -8-8v-24a8 8 0 0 1 16 0v24a8 8 0 0 1 -8 8z" fill="#e82f3e"/></g></svg>
-                    </div>
-                    <div  class="col fireNumber">
-                        <div class="currentStreak float-left" id="currentStreak">streak number</div>
-                    </div>   
+    </div>
+    <div class="row mainDiv m-5">
+        <div class="d-inline-flex col-6 rocket" id="canvas-container">
+            <canvas id="myCanvas" width="900" height="900"></canvas>
+        </div>
+        <div class="col-6 flex-col">
+            <div class="rowElement date">
+                <div class="dateTime"></div>
+                <div class="timeUntil"></div>
+            </div>
+    
+            <div class="row m-1">
+                <input type="time" class="d-inline-flex m-2 col time" id="submitPreferredSleepTimeInput">
+                <div data-toggle="popover" title="Your preferred time has been set!" class="btn btn-warning d-block setTime m-2 col" id="submitPreferredSleepTimeButton">Set Preferred Time</div>
+            </div>
+            <div class="btn" id="checkoutButton" class="checkoutButton">
+                <div id="checkoutText">
+                    Checkout button
                 </div>
             </div>
+            <div class="d-flex rowElement streak">
+                <div class="col">
+                    <svg class="float-right" height="64" viewBox="0 0 512 512" width="64" xmlns="http://www.w3.org/2000/svg"><g id="flat"><path d="m276 116a107.37 107.37 0 0 1 20 62.409v21.591a30.739 30.739 0 0 0 29.821-23.283l2.179-8.717 5.912 7.095a63 63 0 0 1 -.564 81.333 22.147 22.147 0 0 0 1.152 30.072 22.147 22.147 0 0 0 32.955-1.826l16.545-20.674 16 40a139.835 139.835 0 0 1 -35.059 139.059l-2.018 2.018a146.549 146.549 0 0 1 -103.623 42.923h-16.325a146.549 146.549 0 0 1 -125.665-71.15 146.551 146.551 0 0 1 12.681-168.734l64.764-78.4a53.884 53.884 0 0 0 7.7-56.2 53.883 53.883 0 0 1 19.345-66.716l34.2-22.8v29.591a107.37 107.37 0 0 0 20 62.409z" fill="#e82f3e"/><path d="m315.077 433.411.071-.071a99.417 99.417 0 0 0 25.025-97.34l-23.273 23.274a23.652 23.652 0 0 1 -33.451 0 23.653 23.653 0 0 1 -1.449-31.868 62.507 62.507 0 0 0 7.889-67.971l-37.716-75.435-5.8 63.8a57.053 57.053 0 0 1 -21.173 39.382l-32.973 26.379a74.736 74.736 0 0 0 -28.049 58.36v9.079a74.74 74.74 0 0 0 26.891 57.415 74.741 74.741 0 0 0 48.584 17.319l23.118-.229a74.734 74.734 0 0 0 52.306-22.094z" fill="#ea9d2d"/><path d="m120 192a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#ff6268"/><path d="m144 152a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#e82f3e"/><path d="m112 120a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#961b20"/><path d="m392 216a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#e82f3e"/><path d="m368 160a8 8 0 0 1 -8-8v-16a8 8 0 0 1 16 0v16a8 8 0 0 1 -8 8z" fill="#ff6268"/><path d="m400 136a8 8 0 0 1 -8-8v-24a8 8 0 0 1 16 0v24a8 8 0 0 1 -8 8z" fill="#e82f3e"/></g></svg>
+                </div>
+                <div  class="col fireNumber">
+                    <div class="currentStreak float-left" id="currentStreak">streak number</div>
+                </div>   
+            </div>
+            <div class="currentFuel" id="currentFuel">Current Fuel</div>
+            <div class="currentPosition" id="currentPosition">Current Position</div>  
+            <div class="currentPlanetA" id="currentPlanetA">Current Planet A</div>
+            <div class="currentPlanetB" id="currentPlanetB">Current Planet B</div>  
         </div>
-    
+    </div>
+    <script src="storage.js"></script>
+    <script src="controls.js"></script>
+    <script src="canvas.js"></script>
+
 </body>
 
 </html>
