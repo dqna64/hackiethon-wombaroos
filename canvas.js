@@ -24,12 +24,8 @@ let allPlanets = [
     'uranus'
 ]
 
-// Test user_preferences object
-let user_preferences = {
-    'position': 4,
-}
-
 function updateCanvas(user_preferences) {
+
     ctx.canvas.width = window.innerWidth
     ctx.canvas.height = $("#mainDiv").height();
 
