@@ -30,7 +30,7 @@ let user_preferences = {
 }
 
 function updateCanvas(user_preferences) {
-    ctx.canvas.width = $("#mainDiv").width();
+    ctx.canvas.width = window.innerWidth
     ctx.canvas.height = $("#mainDiv").height();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
