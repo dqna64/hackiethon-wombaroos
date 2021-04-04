@@ -7,9 +7,6 @@ Alternative link <https://dqna64.github.io/hackiethon-wombaroos/>
 
 Remember to `git pull origin main` before working on your local clone of this repo!
 
-
-Every day you sleep on time, your rocket goes closer to the next planet, by consistently sleeping on time, the user reaches the next planet. This is used as a reward for their consistency. Once the user reaches the planet, a new planet appears and they travel to that one. If the user decides to sleep after their allocated time, depending on how late they are, fuel and their streak will be lost. A streak and a planet counter both are used to show the user that they are maintaining their good habit.
-
 ## Description
 Sleep Space is a web app which encourages healthy sleeping discipline. To increase motivation, the app has a space-themed graphical interface with a rocket travelling between planets and asteroids to visualise the user’s progress towards maintaining their desired sleep schedule.
 
