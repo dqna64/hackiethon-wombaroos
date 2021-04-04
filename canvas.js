@@ -75,7 +75,7 @@ function drawPlanet(planetType, planetsIndex) {
         ctx.drawImage(image, x, y, planet_size, planet_size);
     };
     // image.src = `graphics/assets/${allPlanets[planetsIndex]}.png`;
-    image.src = `graphics/assets/${allPlanets[1]}.png`;
+    image.src = `graphics/assets/${allPlanets[planetsIndex]}.png`;
 
 }
 

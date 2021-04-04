@@ -282,30 +282,30 @@ function restoreData() {
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
     }
-    if (!(user.hasOwnProperty("streak"))) {
+    if (!("streak" in user)) {
         // set streak to 0
         user["streak"] = 0
     }
-    if (!(user.hasOwnProperty("position"))) {
+    if (!("position" in user)) {
         user["position"] = 0;
     }
-    if (!(user.hasOwnProperty("fuel"))) {
+    if (!("fuel" in user)) {
         user["fuel"] = 100
     }
-    // if (!(user.hasOwnProperty("currentPlanetA"))) {
-    //     // Get a random integer in range 0 - 7 inclusive,
-    //     // because if you look in canvas.js, there are 8
-    //     // availble planets to choose from.
-    //     // user["currentPlanetA"] = Math.floor(Math.random() * 8)
-    //     user["currentPlanetA"] = 4
-    // }
-    // if (!(user.hasOwnProperty("currentPlanetB"))) {
-    //     // Get a random integer in range 0 - 7 inclusive,
-    //     // because if you look in canvas.js, there are 8
-    //     // availble planets to choose from.
-    //     // user["currentPlanetB"] = Math.floor(Math.random() * 8)
-    //     user["currentPlanetB"] = 6
-    // }
+    if (!("currentPlanetA" in user)) {
+        // Get a random integer in range 0 - 7 inclusive,
+        // because if you look in canvas.js, there are 8
+        // availble planets to choose from.
+        // user["currentPlanetA"] = Math.floor(Math.random() * 8)
+        user["currentPlanetA"] = 4
+    }
+    if (!("currentPlanetB" in user)) {
+        // Get a random integer in range 0 - 7 inclusive,
+        // because if you look in canvas.js, there are 8
+        // availble planets to choose from.
+        // user["currentPlanetB"] = Math.floor(Math.random() * 8)
+        user["currentPlanetB"] = 6
+    }
 
     setItem("user", user)
     let inputString = ""
