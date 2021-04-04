@@ -133,7 +133,6 @@ function checkOut() {
         day = {
             "time_of_sign_out": current_time,
         }
-
         // add 1 to the streak
         user_preferences["streak"] = user_preferences["streak"] + 1
     } else if (isNaN(time_difference)) {
@@ -152,7 +151,9 @@ function checkOut() {
 
         updateFuel(user_preferences, time_difference);
     }
-
+    console.log("testing")
+    $("#checkoutText").text("Sleeping...")
+    user_preferences["sleeping"] = true
     // TODO: change later
     updatePosition(user_preferences, late);
 
@@ -173,7 +174,6 @@ function checkOut() {
     if (day != null) {
         days.push(day)
     }
-
     // send the days object to local storage
     setItem("days", days);
 }
@@ -327,7 +327,14 @@ function restoreData() {
     if (!("planetCount" in user)) {
         user["planetCount"] = 0
     }
+    if (!("sleeping" in user)){
+        user["sleeping"] = false
+    }
+    
     setItem("user", user)
+
+
+    
     let inputString = ""
     if (user["preferred-sleep-hour"] < 10) {
         inputString += "0"
@@ -363,6 +370,20 @@ function restoreData() {
         $(".timeUntil").text(totalGap + " minutes until bed time")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
+    }
+    let days = getItem("days",[])
+    if (days.length != 0){
+        let differenceInHours = (Date.now() - new Date(days[days.length -1]["time_of_sign_out"]))/(1000*60*24)
+        if (differenceInHours >= 12){
+            user["sleeping"] = false
+        }
+    }
+    
+    if (user["sleeping"]){
+        $("#checkoutText").text("Sleeping...")
+    }
+    else {
+        $("#checkoutText").text("Sleep now")
     }
 
     console.log(user)
