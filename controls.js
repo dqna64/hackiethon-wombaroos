@@ -296,15 +296,15 @@ function restoreData() {
         // Get a random integer in range 0 - 7 inclusive,
         // because if you look in canvas.js, there are 8
         // availble planets to choose from.
-        // user["currentPlanetA"] = Math.floor(Math.random() * 8)
-        user["currentPlanetA"] = 4
+        user["currentPlanetA"] = Math.floor(Math.random() * 8)
+        // user["currentPlanetA"] = 4
     }
     if (!("currentPlanetB" in user)) {
         // Get a random integer in range 0 - 7 inclusive,
         // because if you look in canvas.js, there are 8
         // availble planets to choose from.
-        // user["currentPlanetB"] = Math.floor(Math.random() * 8)
-        user["currentPlanetB"] = 6
+        user["currentPlanetB"] = Math.floor(Math.random() * 8)
+        // user["currentPlanetB"] = 6
     }
 
     setItem("user", user)

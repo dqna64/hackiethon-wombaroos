@@ -21,7 +21,7 @@ let allPlanets = [
     'neptune',
     'saturn',
     'titan',
-    'uranas'
+    'uranus'
 ]
 
 // Test user_preferences object
