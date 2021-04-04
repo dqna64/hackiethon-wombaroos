@@ -336,7 +336,7 @@ function restoreData() {
     $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
     $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
     console.log("hello there")
-    $("#totalPlanetsText").text("You have travelled to " + user["planetCount"] + " planets")
+    $("#totalPlanetsText").text(user["planetCount"])
 
     console.log(user)
     updateCanvas(user)
