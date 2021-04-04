@@ -208,7 +208,7 @@ function submitPreferredSleepTime() {
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until bed time")
+        $(".timeUntil").text(totalGap + " minutes until checkout")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -241,7 +241,7 @@ function updateClock() {
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until bed time")
+        $(".timeUntil").text(totalGap + " minutes until checkout")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -360,7 +360,7 @@ function restoreData() {
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until bed time")
+        $(".timeUntil").text(totalGap + " minutes until checkout")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -436,7 +436,7 @@ function restoreDataForTest(){
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until bed time")
+        $(".timeUntil").text(totalGap + " minutes until checkout")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
