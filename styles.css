@@ -4,12 +4,16 @@ html, body {
     position: relative;
 }
 
+body{
+    height: 80%;
+}
+
 .rocket {
     /* background-color: burlywood; */
     max-width: 50%;
 }
 .mainDiv {
-    height: 90%;
+    height: 110%;
 }
 
 .rowElement {
@@ -20,6 +24,7 @@ html, body {
     text-align: center;
     margin: auto;
     font-size: xx-large;
+    color: white;
 }
 
 .streak {
@@ -28,6 +33,8 @@ html, body {
     display: flex;
     background-color: #ff317e;
     border-radius: 0.25rem;
+    width: 45%;
+    margin: 5px;
     
     
 }
@@ -74,6 +81,7 @@ textarea:focus, input:focus {
 
 #submitPreferredSleepTimeButton {
     background-color: #f77b3c;
+    color: white;
 }
 
 #checkoutButton {
@@ -122,9 +130,6 @@ textarea:focus, input:focus {
 }
 
 canvas {
-
-    border: 2px #242424 solid;
-
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
@@ -140,4 +145,64 @@ canvas {
 
 .currentFuel, .currentPosition, .currentPlanetA, .currentPlanetB {
     color: white;
+}
+
+#totalPlanets{
+    background-color: teal;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    width: 49%;
+    margin: 5px;
+    flex-direction: column;
+}
+
+#totalPlanetsText{
+    text-align: center;
+    margin: auto;
+    color: white;
+    font-size: xx-large;
+}
+
+.streakPlanet{
+    flex-direction: row;
+    justify-content: center;
+    height: 39%;
+}
+
+.planetTextBefore{
+    color: white;
+    margin-top: 24px;
+}
+
+.holder{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    bottom: 24px;
+
+}
+
+#fuelContainer {
+    position: relative;
+    display: flex;
+    top: -20px;
+    left: 1%;
+    width: 30%;
+}
+
+#fuelIcon {
+    display: flex;
+    width: 15%;
+}
+
+.separator {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+    50% { opacity: 0; }
 }

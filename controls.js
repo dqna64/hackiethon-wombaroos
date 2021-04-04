@@ -87,20 +87,30 @@ function updateFuel(user_preferences, time_dif) {
     // check if the fuel key exists
     if (!("fuel" in user_preferences)) {
         user_preferences["fuel"] = 100
+        $('.progress-bar').css('width', 100+'%').attr('aria-valuenow', 100);
     } else if (user_preferences["fuel"] > 0 && time_dif > 0) {
         // fuel is defined and non empty so just reduce fuel by time_dif 
-        user_preferences["fuel"] = user_preferences["fuel"] - time_dif
+        user_preferences["fuel"] = user_preferences["fuel"] - time_dif;
+        $('.progress-bar').css('width', user_preferences["fuel"]+'%').attr('aria-valuenow', user_preferences["fuel"]);
     }
 }
 
-function updatePosition(user_preferences, late, time_dif) {
+function updatePosition(user_preferences, late) {
     if (user_preferences["fuel"] <= 0) {
         user_preferences["position"] = 0;
         user_preferences["fuel"] = 100;
-    } else if (!late) {
+        $('.progress-bar').css('width', user_preferences["fuel"]+'%').attr('aria-valuenow', user_preferences["fuel"]);
+        if (user_preferences["planetCount"] >= 1){
+            user_preferences["planetCount"] -= 1
+        }
+    } else {
         user_preferences["position"] = user_preferences["position"] + 1;
         if (user_preferences["position"] >= 7) {
+            user_preferences["planetCount"] += 1
             user_preferences["position"] = 0;
+            user_preferences["currentPlanetA"] = user_preferences["currentPlanetB"];
+            user_preferences["currentPlanetB"] =  Math.floor(Math.random() * 8);
+
         }
     }
 }
@@ -144,13 +154,13 @@ function checkOut() {
     }
 
     // TODO: change later
-    updatePosition(user_preferences, late, time_difference);
+    updatePosition(user_preferences, late);
 
     // update html to show the new streak
     $(".currentStreak").text(user_preferences["streak"])
     $(".currentFuel").text("Current Fuel: " + user_preferences["fuel"])
     $(".currentPosition").text("Current Position: " + user_preferences["position"])
-
+    $("#totalPlanetsText").text(user_preferences["planetCount"])
     // updateCanvas
     updateCanvas(user_preferences)
 
@@ -211,13 +221,13 @@ function submitPreferredSleepTime() {
 
 function updateClock() {
     let date = new Date
-    let dateString = String(date.getHours()) + ":"
+    let dateString = String(date.getHours()) + "<span class=\"separator\">:</span>"
     // add the minutes now
     if (date.getMinutes() < 10) {
         dateString += "0"
     }
     dateString += String(date.getMinutes())
-    $(".dateTime").text(dateString)
+    $(".dateTime").html(dateString)
 
     let user = getItem("user", {})
     let preferredHour = user["preferred-sleep-hour"]
@@ -257,7 +267,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 60 * 1000)
     }, seconds_until_next_minute * 1000)
 
-
+    $("#testingButton").click(function(){
+        let user = getItem("user", {})
+        user["streak"] += 1
+        // user["position"] += 1
+        setItem("user", user)
+        restoreDataForTest()
+    })
     restoreData()
 })
 
@@ -269,6 +285,8 @@ window.addEventListener('resize', resizeCanvas, false);
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    let user_preferences = getItem("user", {})
+    console.log(user_preferences)
     updateCanvas(user_preferences)
 }
 
@@ -276,35 +294,39 @@ function restoreData() {
     let user = getItem("user", {})
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
+    $('.progress-bar').css('width', user["fuel"]+'%').attr('aria-valuenow', user["fuel"]);
     if (isNaN(hours) && isNaN(mins)) {
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
     }
-    if (!(user.hasOwnProperty("streak"))) {
+    if (!("streak" in user)) {
         // set streak to 0
         user["streak"] = 0
     }
-    if (!(user.hasOwnProperty("position"))) {
+    if (!("position" in user)) {
         user["position"] = 0;
     }
-    if (!(user.hasOwnProperty("fuel"))) {
+    if (!("fuel" in user)) {
         user["fuel"] = 100
+        $('.progress-bar').css('width', user["fuel"]+'%').attr('aria-valuenow', user["fuel"]);
     }
-    // if (!(user.hasOwnProperty("currentPlanetA"))) {
-    //     // Get a random integer in range 0 - 7 inclusive,
-    //     // because if you look in canvas.js, there are 8
-    //     // availble planets to choose from.
-    //     // user["currentPlanetA"] = Math.floor(Math.random() * 8)
-    //     user["currentPlanetA"] = 4
-    // }
-    // if (!(user.hasOwnProperty("currentPlanetB"))) {
-    //     // Get a random integer in range 0 - 7 inclusive,
-    //     // because if you look in canvas.js, there are 8
-    //     // availble planets to choose from.
-    //     // user["currentPlanetB"] = Math.floor(Math.random() * 8)
-    //     user["currentPlanetB"] = 6
-    // }
-
+    if (!("currentPlanetA" in user)) {
+        // Get a random integer in range 0 - 7 inclusive,
+        // because if you look in canvas.js, there are 8
+        // availble planets to choose from.
+        user["currentPlanetA"] = Math.floor(Math.random() * 8)
+        // user["currentPlanetA"] = 4
+    }
+    if (!("currentPlanetB" in user)) {
+        // Get a random integer in range 0 - 7 inclusive,
+        // because if you look in canvas.js, there are 8
+        // availble planets to choose from.
+        user["currentPlanetB"] = Math.floor(Math.random() * 8)
+        // user["currentPlanetB"] = 6
+    }
+    if (!("planetCount" in user)){
+        user["planetCount"] = 0
+    }
     setItem("user", user)
     let inputString = ""
     if (user["preferred-sleep-hour"] < 10) {
@@ -325,6 +347,104 @@ function restoreData() {
     $(".currentPosition").text("Current Position: " + user["position"])
     $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
     $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
+    $("#totalPlanetsText").text(user["planetCount"])
 
+    let preferredHour = user["preferred-sleep-hour"]
+    let preferredMin = user["preferred-sleep-minute"]
+    if (preferredHour >= 0 && preferredHour <= 2) {
+        preferredHour += 24
+    }
+    let date = new Date
+    let hourGap = preferredHour - date.getHours()
+    minGap = preferredMin - date.getMinutes()
+
+    let totalGap = hourGap * 60 + minGap
+    if (totalGap > 0) {
+        $(".timeUntil").text(totalGap + " minutes until checkout")
+    } else if (totalGap < 0) {
+        $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
+    }
+
+    console.log(user)
     updateCanvas(user)
+}
+function restoreDataForTest(){
+    let user = getItem("user", {})
+    let hours = user["preferred-sleep-hour"]
+    let mins = user["preferred-sleep-minute"]
+    if (isNaN(hours) && isNaN(mins)) {
+        user["preferred-sleep-hour"] = 22
+        user["preferred-sleep-minute"] = 0
+    }
+    if (!("streak" in user)) {
+        // set streak to 0
+        user["streak"] = 0
+    }
+    if (!("position" in user)) {
+        user["position"] = 0;
+    }
+    if (!("fuel" in user)) {
+        user["fuel"] = 100
+    }
+    if (!("currentPlanetA" in user)) {
+        // Get a random integer in range 0 - 7 inclusive,
+        // because if you look in canvas.js, there are 8
+        // availble planets to choose from.
+        user["currentPlanetA"] = Math.floor(Math.random() * 8)
+        // user["currentPlanetA"] = 4
+    }
+    if (!("currentPlanetB" in user)) {
+        // Get a random integer in range 0 - 7 inclusive,
+        // because if you look in canvas.js, there are 8
+        // availble planets to choose from.
+        user["currentPlanetB"] = Math.floor(Math.random() * 8)
+        // user["currentPlanetB"] = 6
+    }
+    if (!("planetCount" in user)){
+        user["planetCount"] = 0
+    }
+    setItem("user", user)
+    let inputString = ""
+    if (user["preferred-sleep-hour"] < 10) {
+        inputString += "0"
+    }
+    inputString += String(user["preferred-sleep-hour"]) + ":"
+    if (user["preferred-sleep-minute"] < 10) {
+        inputString += "0"
+    }
+    inputString += String(user["preferred-sleep-minute"])
+    $("#submitPreferredSleepTimeInput").val(inputString)
+
+    // display the streak
+    $(".currentStreak").text(user["streak"])
+
+    // display fuel and position and current planets A and B
+    $(".currentFuel").text("Current Fuel: " + user["fuel"])
+    $(".currentPosition").text("Current Position: " + user["position"])
+    $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
+    $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
+    $("#totalPlanetsText").text(user["planetCount"])
+
+    let preferredHour = user["preferred-sleep-hour"]
+    let preferredMin = user["preferred-sleep-minute"]
+    if (preferredHour >= 0 && preferredHour <= 2) {
+        preferredHour += 24
+    }
+    let date = new Date
+    let hourGap = preferredHour - date.getHours()
+    minGap = preferredMin - date.getMinutes()
+
+    let totalGap = hourGap * 60 + minGap
+    if (totalGap > 0) {
+        $(".timeUntil").text(totalGap + " minutes until checkout")
+    } else if (totalGap < 0) {
+        $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
+    }
+
+    console.log(user)
+    updateCanvas(user)
+
+    //For test
+    updatePosition(user,false)
+    setItem("user", user)
 }
