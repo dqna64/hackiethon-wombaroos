@@ -21,7 +21,7 @@ let allPlanets = [
     'neptune',
     'saturn',
     'titan',
-    'uranas'
+    'uranus'
 ]
 
 // Test user_preferences object
@@ -30,9 +30,6 @@ let user_preferences = {
 }
 
 function updateCanvas(user_preferences) {
-    ctx.canvas.width = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // For i is 1 to 6
     for (let i = 1; i < 7; i++) {
@@ -75,7 +72,7 @@ function drawPlanet(planetType, planetsIndex) {
         ctx.drawImage(image, x, y, planet_size, planet_size);
     };
     // image.src = `graphics/assets/${allPlanets[planetsIndex]}.png`;
-    image.src = `graphics/assets/${allPlanets[1]}.png`;
+    image.src = `graphics/assets/${allPlanets[planetsIndex]}.png`;
 
 }
 
