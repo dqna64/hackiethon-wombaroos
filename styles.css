@@ -4,12 +4,16 @@ html, body {
     position: relative;
 }
 
+body{
+    height: 80%;
+}
+
 .rocket {
     /* background-color: burlywood; */
     max-width: 50%;
 }
 .mainDiv {
-    height: 90%;
+    height: 110%;
 }
 
 .rowElement {
@@ -29,6 +33,7 @@ html, body {
     display: flex;
     background-color: #ff317e;
     border-radius: 0.25rem;
+    height: 20%;
     
     
 }
@@ -142,4 +147,10 @@ canvas {
 
 .currentFuel, .currentPosition, .currentPlanetA, .currentPlanetB {
     color: white;
+}
+
+#totalPlanets{
+    background-color: teal;
+    height: 10%;
+    border-radius: 0.25rem;
 }

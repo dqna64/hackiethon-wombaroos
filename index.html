@@ -30,7 +30,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="row mainDiv m-5">
+    <div class="row mainDiv mt-5 ml-5 mr-5 mb-0" id="mainDiv">
         <div class="d-inline-flex col-6 rocket" id="canvas-container">
             <canvas id="myCanvas" width="900" height="900"></canvas>
         </div>
@@ -57,10 +57,13 @@
                     <div class="currentStreak float-left" id="currentStreak">streak number</div>
                 </div>   
             </div>
-            <div class="currentFuel" id="currentFuel">Current Fuel</div>
+            <div class="d-flex rowElement mt-2 mb-2" id="totalPlanets">
+                Total planets discovered
+            </div>
+            <!-- <div class="currentFuel" id="currentFuel">Current Fuel</div>
             <div class="currentPosition" id="currentPosition">Current Position</div>  
             <div class="currentPlanetA" id="currentPlanetA">Current Planet A</div>
-            <div class="currentPlanetB" id="currentPlanetB">Current Planet B</div>  
+            <div class="currentPlanetB" id="currentPlanetB">Current Planet B</div>   -->
         </div>
     </div>
     <script src="storage.js"></script>

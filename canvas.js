@@ -10,7 +10,7 @@ let edge_offset = 24;
 let rocket_size = 50;
 
 // Asteroid square size
-let asteroid_size = 32;
+let asteroid_size = 28;
 
 // An array with the file names of all 8 available planets
 let allPlanets = [
@@ -30,8 +30,8 @@ let user_preferences = {
 }
 
 function updateCanvas(user_preferences) {
-    ctx.canvas.width = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
+    ctx.canvas.width = $("#mainDiv").width();
+    ctx.canvas.height = $("#mainDiv").height();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // For i is 1 to 6
