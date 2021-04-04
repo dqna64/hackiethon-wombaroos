@@ -100,6 +100,7 @@ function updatePosition(user_preferences, late, time_dif) {
     } else if (!late) {
         user_preferences["position"] = user_preferences["position"] + 1;
         if (user_preferences["position"] >= 7) {
+            user_preferences["planetCount"] += 1
             user_preferences["position"] = 0;
         }
     }
@@ -306,7 +307,9 @@ function restoreData() {
         user["currentPlanetB"] = Math.floor(Math.random() * 8)
         // user["currentPlanetB"] = 6
     }
-
+    if (!("planetCount" in user)){
+        user["planetCount"] = 0
+    }
     setItem("user", user)
     let inputString = ""
     if (user["preferred-sleep-hour"] < 10) {
@@ -327,6 +330,6 @@ function restoreData() {
     $(".currentPosition").text("Current Position: " + user["position"])
     $(".currentPlanetA").text("Current Planet A: " + user["currentPlanetA"])
     $(".currentPlanetB").text("Current Plant B: " + user["currentPlanetB"])
-    console.log(user["position"])
+    console.log(user)
     updateCanvas(user)
 }
