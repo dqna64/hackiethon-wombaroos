@@ -87,11 +87,11 @@ function updateFuel(user_preferences, time_dif) {
     // check if the fuel key exists
     if (!("fuel" in user_preferences)) {
         user_preferences["fuel"] = 100
-        $('.progress-bar').css('width', 100+'%').attr('aria-valuenow', 100);
+        $('.progress-bar').css('width', 100 + '%').attr('aria-valuenow', 100);
     } else if (user_preferences["fuel"] > 0 && time_dif > 0) {
         // fuel is defined and non empty so just reduce fuel by time_dif 
         user_preferences["fuel"] = user_preferences["fuel"] - time_dif;
-        $('.progress-bar').css('width', user_preferences["fuel"]+'%').attr('aria-valuenow', user_preferences["fuel"]);
+        $('.progress-bar').css('width', user_preferences["fuel"] + '%').attr('aria-valuenow', user_preferences["fuel"]);
     }
 }
 
@@ -99,8 +99,8 @@ function updatePosition(user_preferences, late) {
     if (user_preferences["fuel"] <= 0) {
         user_preferences["position"] = 0;
         user_preferences["fuel"] = 100;
-        $('.progress-bar').css('width', user_preferences["fuel"]+'%').attr('aria-valuenow', user_preferences["fuel"]);
-        if (user_preferences["planetCount"] >= 1){
+        $('.progress-bar').css('width', user_preferences["fuel"] + '%').attr('aria-valuenow', user_preferences["fuel"]);
+        if (user_preferences["planetCount"] >= 1) {
             user_preferences["planetCount"] -= 1
         }
     } else {
@@ -109,7 +109,7 @@ function updatePosition(user_preferences, late) {
             user_preferences["planetCount"] += 1
             user_preferences["position"] = 0;
             user_preferences["currentPlanetA"] = user_preferences["currentPlanetB"];
-            user_preferences["currentPlanetB"] =  Math.floor(Math.random() * 8);
+            user_preferences["currentPlanetB"] = Math.floor(Math.random() * 8);
 
         }
     }
@@ -208,7 +208,7 @@ function submitPreferredSleepTime() {
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until checkout")
+        $(".timeUntil").text(totalGap + " minutes until bed time")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -241,7 +241,7 @@ function updateClock() {
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until checkout")
+        $(".timeUntil").text(totalGap + " minutes until bed time")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 60 * 1000)
     }, seconds_until_next_minute * 1000)
 
-    $("#testingButton").click(function(){
+    $("#testingButton").click(function () {
         let user = getItem("user", {})
         user["streak"] += 1
         // user["position"] += 1
@@ -294,7 +294,7 @@ function restoreData() {
     let user = getItem("user", {})
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
-    $('.progress-bar').css('width', user["fuel"]+'%').attr('aria-valuenow', user["fuel"]);
+    $('.progress-bar').css('width', user["fuel"] + '%').attr('aria-valuenow', user["fuel"]);
     if (isNaN(hours) && isNaN(mins)) {
         user["preferred-sleep-hour"] = 22
         user["preferred-sleep-minute"] = 0
@@ -308,7 +308,7 @@ function restoreData() {
     }
     if (!("fuel" in user)) {
         user["fuel"] = 100
-        $('.progress-bar').css('width', user["fuel"]+'%').attr('aria-valuenow', user["fuel"]);
+        $('.progress-bar').css('width', user["fuel"] + '%').attr('aria-valuenow', user["fuel"]);
     }
     if (!("currentPlanetA" in user)) {
         // Get a random integer in range 0 - 7 inclusive,
@@ -324,7 +324,7 @@ function restoreData() {
         user["currentPlanetB"] = Math.floor(Math.random() * 8)
         // user["currentPlanetB"] = 6
     }
-    if (!("planetCount" in user)){
+    if (!("planetCount" in user)) {
         user["planetCount"] = 0
     }
     setItem("user", user)
@@ -360,7 +360,7 @@ function restoreData() {
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until checkout")
+        $(".timeUntil").text(totalGap + " minutes until bed time")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -368,7 +368,7 @@ function restoreData() {
     console.log(user)
     updateCanvas(user)
 }
-function restoreDataForTest(){
+function restoreDataForTest() {
     let user = getItem("user", {})
     let hours = user["preferred-sleep-hour"]
     let mins = user["preferred-sleep-minute"]
@@ -400,7 +400,7 @@ function restoreDataForTest(){
         user["currentPlanetB"] = Math.floor(Math.random() * 8)
         // user["currentPlanetB"] = 6
     }
-    if (!("planetCount" in user)){
+    if (!("planetCount" in user)) {
         user["planetCount"] = 0
     }
     setItem("user", user)
@@ -436,7 +436,7 @@ function restoreDataForTest(){
 
     let totalGap = hourGap * 60 + minGap
     if (totalGap > 0) {
-        $(".timeUntil").text(totalGap + " minutes until checkout")
+        $(".timeUntil").text(totalGap + " minutes until bed time")
     } else if (totalGap < 0) {
         $(".timeUntil").text(-totalGap + " minutes have past, you've already lost " + -totalGap + " bars of fuel so go to sleep soon if you can!")
     }
@@ -445,6 +445,6 @@ function restoreDataForTest(){
     updateCanvas(user)
 
     //For test
-    updatePosition(user,false)
+    updatePosition(user, false)
     setItem("user", user)
 }
