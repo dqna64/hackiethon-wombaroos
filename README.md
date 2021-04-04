@@ -1,11 +1,13 @@
-# hackiethon-wombaroos
-Hackathon project of The Wombaroos participating in Hackiethon by HackMelbourne.
+# Sleep Space
+Sleep Space is the Hackathon project of The Wombaroos participating in Hackiethon by HackMelbourne.
 
-Currently hosted at <https://dqna64.github.io/hackiethon-wombaroos/>
+Currently hosted at <https://sleepspace.tk>
+Alternative link <https://dqna64.github.io/hackiethon-wombaroos/>
 
 Remember to `git pull origin main` before working on your local clone of this repo!
 
-Sleep Space provides a reward based system to incentivise a consistent sleep schedule for people working from home. The lack of structure while working from home has led to an increasing number of people, especially young people disregarding their sleep schedule leading to sleep deprivation. Good sleep improves learning, an important factor for people in school that can boost
-productivity, good sleep is also associated with decreased chances of obesity, a better wellbeing and is an important aspect for healthy growth and development. 
+The lack of structure in our daily routines while working and studying from home has caused many people, especially adolescents, to neglect their sleep schedule. Countless studies have shown that getting sufficient sleep on a regular basis improves concentration, memory retention and cognitive abilities, which are essential for students and workers. We wanted to develop a web app to help us mark the boundary between our work lives and personal wellbeing routines, specifically our sleep hours, so we decided to create Sleep Space.
 
-Every day you sleep on time, your rocket goes closer to the next planet, by consistently sleeping on time, the user reaches the next planet. This is used as a reward for their consistency. Once the user reaches the planet, a new planet appears and they travel to that one. If the user decides to sleep after their allocated time, depending on how late they are, fuel and their streak will be lost. A streak and a planet counter both are used to show the user that they are maintaining their good habit.
+Sleep Space is a web app which encourages healthy sleeping discipline. To increase motivation, the app has a space-themed graphical interface with a rocket travelling between planets and asteroids to visualise the user’s progress towards maintaining their desired sleep schedule.
+
+Our final product is capable of tracking our sleep schedule with fun space-themed visuals, a punishment system in the form of limited fuel, and a reward system in the form of discovering new planets. By going to bed on time consistently, the user will discover new planets while maintaining a streak which will encourage them to keep a consistent sleep schedule.
