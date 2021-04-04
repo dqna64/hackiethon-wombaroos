@@ -144,7 +144,7 @@ textarea:focus, input:focus {
 #canvas-container {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgb(3, 7, 20), rgb(16, 44, 125));
+    background-image: linear-gradient(rgba(3, 7, 20, 0.7), rgb(16, 44, 125, 0.7));
     /*background: transparent; */
     border: 2px white solid;
     border-radius: 0.25rem;
