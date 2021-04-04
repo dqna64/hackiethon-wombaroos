@@ -152,7 +152,7 @@ canvas {
     border-radius: 0.25rem;
     display: flex;
     align-items: center;
-    width: 49%;
+    width: 45%;
     margin: 5px;
     flex-direction: column;
 }
