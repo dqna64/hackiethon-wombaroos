@@ -4,7 +4,7 @@ html, body {
     position: relative;
 }
 
-body{
+body {
     height: 80%;
 }
 
@@ -20,7 +20,7 @@ body{
     height: 33%;
 }
 
-#currentStreak{
+#currentStreak {
     text-align: center;
     margin: auto;
     font-size: xx-large;
@@ -35,8 +35,6 @@ body{
     border-radius: 0.25rem;
     width: 45%;
     margin: 5px;
-    
-    
 }
 .date {
     height: 28%;
@@ -98,7 +96,7 @@ textarea:focus, input:focus {
     text-align: center;
     margin: auto;
     color: white;
-    height: 23%;
+    font-size: 3em;
 }
 
 .timeUntil {
@@ -125,8 +123,10 @@ textarea:focus, input:focus {
 #canvas-container {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgb(10, 27, 77), rgb(122, 207, 222));
-    /* background: transparent; */
+    background-image: linear-gradient(rgb(3, 7, 20), rgb(16, 44, 125));
+    /*background: transparent; */
+    border: 2px white solid;
+    border-radius: 0.25rem;
 }
 
 canvas {
@@ -170,9 +170,10 @@ canvas {
     height: 39%;
 }
 
-.planetTextBefore{
+.planetTextBefore {
     color: white;
     margin-top: 24px;
+    font-size: 1.2em;
 }
 
 .holder{
