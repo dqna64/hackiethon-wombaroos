@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script> -->
     <!-- <script src="../p5.js"></script>
@@ -21,14 +22,15 @@
 </head>
 <body style="background-image: url(graphics/assets/bg.png);">
     
-    <div class="alert alert-warning alert-dismissible fade show m-auto mt-2 w-50" style="z-index: 5;" role="alert">
+    <div class="alert alert-warning alert-dismissible fade show m-auto mt-2" style="z-index: 5;" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
+    <h1 class="mainTitle">Sleep Space</h1>
     <div class="row mainDiv mt-5 ml-5 mr-5 mb-0" id="mainDiv">
+
         <div class="d-inline-flex col-6 rocket" id="canvas-container">
             <canvas id="myCanvas" width="900" height="900"></canvas>
 
@@ -50,11 +52,11 @@
     
             <div class="row m-1">
                 <input type="time" class="d-inline-flex m-2 col time" id="submitPreferredSleepTimeInput">
-                <div data-toggle="popover" title="Your preferred time has been set!" class="btn btn-warning d-block setTime m-2 col" id="submitPreferredSleepTimeButton">Set Bed Time</div>
+                <div data-toggle="popover" title="Your preferred time has been set!" class="btn btn-warning d-block setTime m-2 col" id="submitPreferredSleepTimeButton">Set Preferred Time</div>
             </div>
             <div class="btn" id="checkoutButton" class="checkoutButton">
                 <div id="checkoutText">
-                    Sleep Now
+                    Checkout
                 </div>
             </div>
             <div class="row streakPlanet">
