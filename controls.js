@@ -102,6 +102,8 @@ function updatePosition(user_preferences, late, time_dif) {
         if (user_preferences["position"] >= 7) {
             user_preferences["planetCount"] += 1
             user_preferences["position"] = 0;
+            user_preferences["currentPlanetA"] = user_preferences["currentPlanetB"];
+            user_preferences["currentPlanetB"] =  Math.floor(Math.random() * 8);
         }
     }
 }
